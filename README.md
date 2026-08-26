@@ -13,3 +13,5 @@ git config --global user.name "YeonjiKim0316"
 git add README.md
 git commit -m "first commit"
 git push -u origin main
+
+from remote
