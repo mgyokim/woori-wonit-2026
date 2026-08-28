@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>우리WON 청년 IT 아카데미 — 오늘의 학습</title>
+
+    <!-- 구글 폰트 + 머티리얼 아이콘. 라이브러리가 아니라 '글꼴'이라 JS 프레임워크와 무관합니다 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&display=swap"
+          rel="stylesheet">
+
+    <style>
+        /* ==========================================================
+           Material Design 3 디자인 토큰
+           MUI(머티리얼)의 최신 버전이 쓰는 색 역할 이름을 그대로 따라갑니다.
+           primary(주색) / on-primary(주색 위의 글자) / container(옅은 주색 면)
+           ========================================================== */
+        :root {
+            --primary: #0067ac; /* 우리은행 브랜드 블루 */
+            --on-primary: #ffffff;
+            --primary-container: #d3e4ff;
+            --on-primary-container: #001c37;
+
+            --secondary-container: #dae2f0;
+            --on-secondary-container: #131c26;
+
+            --surface: #fbfcfe;
+            --surface-container: #eff1f5;
+            --surface-container-high: #e8eaee;
+            --on-surface: #191c1e;
+            --on-surface-variant: #43474b;
+            --outline-variant: #c3c7cb;
+
+            --shadow: 0 1px 2px rgba(0, 0, 0, .10), 0 1px 3px 1px rgba(0, 0, 0, .06);
+            --shadow-2: 0 1px 2px rgba(0, 0, 0, .12), 0 2px 6px 2px rgba(0, 0, 0, .08);
+
+            /* MD3는 모서리를 크게 깎습니다. 이게 '요즘 MUI 느낌'의 핵심입니다 */
+            --radius-s: 8px;
+            --radius-m: 12px;
+            --radius-l: 16px;
+            --radius-xl: 28px;
+        }
+
+        /* 다크 모드 : 같은 역할 이름에 값만 바꿔 끼웁니다 */
+        :root[data-theme="dark"] {
+            --primary: #a2c9ff;
+            --on-primary: #00325a;
+            --primary-container: #00497f;
+            --on-primary-container: #d3e4ff;
+
+            --secondary-container: #3a4857;
+            --on-secondary-container: #dae2f0;
+
+            --surface: #111416;
+            --surface-container: #1d2022;
+            --surface-container-high: #272a2d;
+            --on-surface: #e2e2e5;
+            --on-surface-variant: #c3c7cb;
+            --outline-variant: #43474b;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Roboto", "Pretendard", -apple-system, sans-serif;
+            background: var(--surface);
+            color: var(--on-surface);
+            transition: background .2s, color .2s;
+        }
+
+        .material-symbols-rounded {
+            font-family: "Material Symbols Rounded";
+            font-size: 24px;
+            line-height: 1;
+            user-select: none;
+        }
+
+        /* ---------- 상단 앱 바 ---------- */
+        .app-bar {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            background: var(--surface-container);
+            box-shadow: var(--shadow);
+        }
+
+        .app-bar h1 {
+            flex: 1;
+            margin: 0;
+            font-size: 1.15rem;
+            font-weight: 500;
+            letter-spacing: -.2px;
+        }
+
+        /* 아이콘 버튼 : 원형이고 누르면 물결(ripple)이 퍼집니다 */
+        .icon-btn {
+            position: relative;
+            overflow: hidden;
+            display: grid;
+            place-items: center;
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: 50%;
+            background: transparent;
+            color: var(--on-surface-variant);
+            cursor: pointer;
+        }
+
+        .icon-btn:hover {
+            background: var(--surface-container-high);
+        }
+
+        /* ---------- 레이아웃 ---------- */
+        main {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 24px 16px 96px;
+            display: grid;
+            gap: 16px;
+        }
+
+        /* ---------- 카드 ---------- */
+        .card {
+            background: var(--surface-container);
+            border-radius: var(--radius-l);
+            padding: 24px;
+            box-shadow: var(--shadow);
+        }
+
+        .card.hero {
+            background: var(--primary-container);
+            color: var(--on-primary-container);
+            border-radius: var(--radius-xl);
+        }
+
+        .card h2 {
+            margin: 0 0 8px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -.4px;
+        }
+
+        .card h3 {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 0 0 16px;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .card p {
+            margin: 0 0 12px;
+            line-height: 1.7;
+            color: inherit;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            margin-bottom: 12px;
+            font-size: .8rem;
+            font-weight: 500;
+            letter-spacing: .4px;
+            opacity: .75;
+        }
+
+        /* ---------- 칩 ---------- */
+        .chip-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+        }
+
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            border: 1px solid var(--outline-variant);
+            border-radius: var(--radius-s);
+            background: transparent;
+            font-size: .82rem;
+            font-weight: 500;
+        }
+
+        .card.hero .chip {
+            border-color: rgba(0, 0, 0, .18);
+        }
+
+        /* ---------- 진행률 바 ---------- */
+        .progress {
+            height: 8px;
+            border-radius: 99px;
+            background: var(--surface-container-high);
+            overflow: hidden;
+        }
+
+        .progress > span {
+            display: block;
+            height: 100%;
+            width: 0;
+            border-radius: 99px;
+            background: var(--primary);
+            transition: width .6s cubic-bezier(.2, 0, 0, 1);
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-size: .85rem;
+            color: var(--on-surface-variant);
+        }
+
+        /* ---------- 체크리스트 ---------- */
+        .list {
+            display: grid;
+            gap: 4px;
+        }
+
+        .list-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 12px 14px;
+            border-radius: var(--radius-m);
+            cursor: pointer;
+            transition: background .15s;
+        }
+
+        .list-item:hover {
+            background: var(--surface-container-high);
+        }
+
+        .list-item input {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--primary);
+            cursor: pointer;
+        }
+
+        .list-item .tag {
+            font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+            font-size: .9rem;
+            font-weight: 500;
+            color: var(--primary);
+        }
+
+        .list-item .desc {
+            font-size: .85rem;
+            color: var(--on-surface-variant);
+        }
+
+        .list-item.done .tag,
+        .list-item.done .desc {
+            text-decoration: line-through;
+            opacity: .45;
+        }
+
+        /* ---------- 버튼 ---------- */
+        .btn {
+            position: relative;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 24px;
+            border: none;
+            border-radius: 99px; /* MD3 버튼은 알약 모양 */
+            background: var(--primary);
+            color: var(--on-primary);
+            font-family: inherit;
+            font-size: .9rem;
+            font-weight: 500;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+        }
+
+        .btn.tonal {
+            background: var(--secondary-container);
+            color: var(--on-secondary-container);
+            box-shadow: none;
+        }
+
+        .btn-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        /* ---------- 물결(ripple) 효과 ---------- */
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: currentColor;
+            opacity: .28;
+            transform: scale(0);
+            animation: ripple .5s linear;
+            pointer-events: none;
+        }
+
+        @keyframes ripple {
+            to {
+                transform: scale(3);
+                opacity: 0;
+            }
+        }
+
+        /* ---------- 스낵바 ---------- */
+        .snackbar {
+            position: fixed;
+            left: 50%;
+            bottom: 24px;
+            transform: translate(-50%, 120%);
+            padding: 14px 20px;
+            border-radius: var(--radius-s);
+            background: #303336;
+            color: #f1f1f4;
+            font-size: .88rem;
+            box-shadow: var(--shadow-2);
+            transition: transform .3s cubic-bezier(.2, 0, 0, 1);
+        }
+
+        .snackbar.show {
+            transform: translate(-50%, 0);
+        }
+
+        /* ---------- 푸터 ---------- */
+        .site-footer {
+            margin-top: 8px;
+            padding: 32px 16px 40px;
+            background: var(--surface-container);
+            border-top: 1px solid var(--outline-variant);
+        }
+
+        .footer-inner {
+            max-width: 880px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+        }
+
+        .site-footer h4 {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 0 0 14px;
+            font-size: .82rem;
+            font-weight: 700;
+            letter-spacing: .6px;
+            color: var(--primary);
+        }
+
+        /* 푸터의 정보도 "이름 - 값" 쌍이라 dl 을 씁니다 */
+        .site-footer dl {
+            margin: 0;
+            display: grid;
+            grid-template-columns: 72px 1fr;
+            gap: 8px 12px;
+            font-size: .85rem;
+            line-height: 1.5;
+        }
+
+        .site-footer dt {
+            color: var(--on-surface-variant);
+        }
+
+        .site-footer dd {
+            margin: 0;
+        }
+
+        .site-footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .site-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .copyright {
+            max-width: 880px;
+            margin: 28px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid var(--outline-variant);
+            font-size: .78rem;
+            color: var(--on-surface-variant);
+            text-align: center;
+        }
+
+        @media (max-width: 600px) {
+            .card { padding: 20px; }
+            .card h2 { font-size: 1.3rem; }
+            .footer-inner { grid-template-columns: 1fr; gap: 28px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- header : 페이지 최상단 머리말 영역. MD3의 Top App Bar 역할 -->
+<header class="app-bar">
+    <span class="material-symbols-rounded" style="color:var(--primary)">account_balance</span>
+    <h1>우리WON 청년 IT 아카데미</h1>
+    <button class="icon-btn" id="themeBtn" type="button" title="테마 전환">
+        <span class="material-symbols-rounded" id="themeIcon">dark_mode</span>
+    </button>
+</header>
+
+<!-- main : 이 문서의 핵심 내용. 페이지당 하나만 둡니다 -->
+<main>
+
+    <!-- section : 주제가 하나로 묶이는 덩어리 -->
+    <section class="card hero">
+        <span class="eyebrow">2026.08.28 · DAY 3</span>
+        <h2>안녕하세요, 김민교입니다 👋</h2>
+        <p>
+            저는 <strong>우리금융그룹</strong>의 <strong>우리WON 청년 IT 아카데미</strong>를 수강하고 있습니다.<br>
+            오늘은 <strong>HTML</strong>에 대해서 학습하고 있습니다.
+        </p>
+        <div class="chip-row">
+            <span class="chip"><span class="material-symbols-rounded" style="font-size:16px">code</span>HTML</span>
+            <span class="chip"><span class="material-symbols-rounded" style="font-size:16px">school</span>프론트엔드</span>
+            <span class="chip"><span class="material-symbols-rounded" style="font-size:16px">schedule</span>600시간 과정</span>
+        </div>
+    </section>
+
+    <section class="card">
+        <h3><span class="material-symbols-rounded" style="font-size:20px">trending_up</span>커리큘럼 진행률</h3>
+        <div class="progress"><span id="bar"></span></div>
+        <div class="progress-label">
+            <span>01. 금융 서비스 프론트엔드 개발</span>
+            <span id="pct">0%</span>
+        </div>
+    </section>
+
+    <section class="card">
+        <h3><span class="material-symbols-rounded" style="font-size:20px">checklist</span>오늘 배운 태그</h3>
+        <div class="list" id="list">
+            <!-- 항목은 아래 JavaScript가 만들어 넣습니다 -->
+        </div>
+        <div class="btn-row">
+            <button class="btn" id="allBtn" type="button">
+                <span class="material-symbols-rounded" style="font-size:18px">done_all</span>전체 체크
+            </button>
+            <button class="btn tonal" id="resetBtn" type="button">
+                <span class="material-symbols-rounded" style="font-size:18px">restart_alt</span>초기화
+            </button>
+        </div>
+    </section>
+
+</main>
+
+<!-- footer : 문서의 꼬리말. 만든 사람 정보, 저작권, 부가 정보가 들어가는 자리 -->
+<footer class="site-footer">
+    <div class="footer-inner">
+
+        <section>
+            <h4><span class="material-symbols-rounded" style="font-size:18px">school</span>프로그램 정보</h4>
+            <dl>
+                <dt>과정명</dt>
+                <dd>우리WON 청년 IT 아카데미</dd>
+                <dt>주관 · 운영</dt>
+                <dd>고용노동부 주관 · 우리금융그룹 운영</dd>
+                <dt>교육기간</dt>
+                <dd><time datetime="2026-08-25">2026.08.25</time> ~ <time datetime="2026-12-11">2026.12.11</time> (600시간)</dd>
+                <dt>교육장소</dt>
+                <dd>우리에프아이에스 아카데미 (서울 마포구 상암IT타워)</dd>
+                <dt>홈페이지</dt>
+                <dd><a href="https://wooriwonit.com/" target="_blank" rel="noopener">wooriwonit.com</a></dd>
+            </dl>
+        </section>
+
+        <section>
+            <h4><span class="material-symbols-rounded" style="font-size:18px">person</span>내 정보</h4>
+            <dl>
+                <dt>이름</dt>
+                <dd>김민교</dd>
+                <dt>구분</dt>
+                <dd>1기 교육생</dd>
+                <dt>학습 단원</dt>
+                <dd>01. 금융 서비스 프론트엔드 개발</dd>
+                <dt>오늘 주제</dt>
+                <dd>HTML 기초 — 시맨틱 태그와 폼</dd>
+                <dt>GitHub</dt>
+                <dd><a href="https://github.com/mgyokim" target="_blank" rel="noopener">@mgyokim</a></dd>
+            </dl>
+        </section>
+
+    </div>
+
+    <!-- small : 저작권·면책 같은 부수적인 문구에 쓰는 태그 -->
+    <p class="copyright">
+        <small>이 페이지는 우리WON 청년 IT 아카데미 HTML 학습 실습으로 제작되었습니다. &copy; 2026 김민교</small>
+    </p>
+</footer>
+
+<div class="snackbar" id="snackbar"></div>
+
+<script>
+    /* ==========================================================
+       순수 JavaScript만 사용합니다. React 같은 프레임워크 없음.
+       ========================================================== */
+
+    // 오늘 학습한 태그 목록 — 데이터를 배열로 두고 화면은 여기서 만들어 냅니다
+    const TAGS = [
+        {tag: '<article>', desc: '그 자체로 완결된 독립 콘텐츠'},
+        {tag: '<header> / <footer>', desc: '영역의 머리말과 꼬리말'},
+        {tag: '<dl> / <dt> / <dd>', desc: '"이름 - 값" 쌍으로 된 정의 목록'},
+        {tag: '<input>', desc: 'text, radio, checkbox, date, range 등 입력 타입'},
+        {tag: '<select> / <option>', desc: '정해진 보기 중에서 고르게 할 때'},
+        {tag: '<form>', desc: 'submit으로 전송, reset으로 초기화'},
+    ];
+
+    const list = document.getElementById('list');
+    const bar = document.getElementById('bar');
+    const pct = document.getElementById('pct');
+    const snackbar = document.getElementById('snackbar');
+
+    // 배열을 돌면서 목록 항목을 만들어 화면에 붙입니다
+    TAGS.forEach((item, i) => {
+        const row = document.createElement('label');
+        row.className = 'list-item';
+        row.innerHTML = `
+            <input type="checkbox" data-i="${i}">
+            <span>
+                <span class="tag">${item.tag.replace(/</g, '&lt;')}</span><br>
+                <span class="desc">${item.desc}</span>
+            </span>`;
+        list.appendChild(row);
+    });
+
+    const boxes = list.querySelectorAll('input[type="checkbox"]');
+
+    // 진행률을 다시 계산해서 막대와 숫자를 갱신합니다
+    function render() {
+        let done = 0;
+        boxes.forEach(box => {
+            box.closest('.list-item').classList.toggle('done', box.checked);
+            if (box.checked) done++;
+        });
+        const rate = Math.round(done / boxes.length * 100);   // 소수점 없이 정수 퍼센트
+        bar.style.width = rate + '%';
+        pct.textContent = rate + '%';
+
+        if (rate === 100) toast('오늘 학습 목표를 모두 완료했습니다! 🎉');
+    }
+
+    // 스낵바를 잠깐 띄웠다가 접습니다
+    let timer;
+    function toast(msg) {
+        snackbar.textContent = msg;
+        snackbar.classList.add('show');
+        clearTimeout(timer);
+        timer = setTimeout(() => snackbar.classList.remove('show'), 2600);
+    }
+
+    boxes.forEach(box => box.addEventListener('change', render));
+
+    document.getElementById('allBtn').addEventListener('click', () => {
+        boxes.forEach(box => box.checked = true);
+        render();
+    });
+
+    document.getElementById('resetBtn').addEventListener('click', () => {
+        boxes.forEach(box => box.checked = false);
+        render();
+        toast('체크를 모두 해제했습니다');
+    });
+
+    /* ---------- 다크 모드 전환 ---------- */
+    const themeBtn = document.getElementById('themeBtn');
+    const themeIcon = document.getElementById('themeIcon');
+
+    themeBtn.addEventListener('click', () => {
+        const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+        document.documentElement.setAttribute('data-theme', dark ? 'light' : 'dark');
+        themeIcon.textContent = dark ? 'dark_mode' : 'light_mode';
+    });
+
+    /* ---------- 물결(ripple) 효과 ---------- */
+    // 버튼을 누른 '그 지점'에서 원이 퍼지도록 좌표를 계산해 span을 심습니다
+    document.querySelectorAll('.btn, .icon-btn').forEach(el => {
+        el.addEventListener('click', e => {
+            const rect = el.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const span = document.createElement('span');
+            span.className = 'ripple';
+            span.style.width = span.style.height = size + 'px';
+            span.style.left = (e.clientX - rect.left - size / 2) + 'px';
+            span.style.top = (e.clientY - rect.top - size / 2) + 'px';
+            el.appendChild(span);
+            setTimeout(() => span.remove(), 500);
+        });
+    });
+
+    render();   // 첫 화면을 그립니다
+</script>
+
+</body>
+</html>
