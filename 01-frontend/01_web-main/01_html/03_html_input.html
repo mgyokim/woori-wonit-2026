@@ -42,14 +42,37 @@
 <!-- form 의 submit은 폼을 통째로 전달하는 역할 -->
 <!-- form 의 reset은 폼을 통째로 초기화하는 역할 -->
 <!-- 쿼리스트링: ? 뒤에 키=값 & 키=값
-                ?name=김연지&affiliation=FIS-WONIT-->
+                ?name=김민교&affiliation=FIS-WONIT-->
 <form>
     <label for="name">이름:</label><br>
-    <input type="text" id="name" name="name" value="김연지"><br>
+    <input type="text" id="name" name="name" value="김민교"><br>
     <label for="affiliation">소속:</label><br>
     <input type="text" id="affiliation" name="affiliation" value="SIAT"><br><br>
     <input type="submit" value="전송"> <!-- value를 지워보고 바꿔보기 -->
     <input type="reset" value="초기화">
 </form>
+<hr>
+
+<form id="inputForm">
+    <label>이름:</label>
+    <input type="text" name="userName">
+    <input type="submit" value="전송">
+</form>
+
+
+<p id="result"></p>
+
+<script>
+  const form = document.querySelector('#inputForm');
+  const result = document.querySelector('#result');
+
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    const input = form.elements.namedItem('userName');
+    result.textContent = `입력한 이름: ${input.value}`;
+  });
+</script>
+
 </body>
 </html>
