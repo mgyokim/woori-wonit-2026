@@ -32,14 +32,20 @@
                 <p class="hint">required 가 붙어 있어 비우면 제출되지 않습니다.</p>
             </div>
 
-          <div class="field">
-            <label for="sex">성별</label>
-            <select id="sex" name="sex" required>
-              <option value="">선택하세요</option>
-              <option value="male">남</option>
-              <option value="female">여</option>
-            </select>
-          </div>
+          <fieldset>
+            <legend>성별</legend>
+            <div class="choice-list">
+              <label class="choice">
+                <input type="radio" name="sex" value="male" required>
+                <span>남</span>
+              </label>
+              <label class="choice">
+                <input type="radio" name="sex" value="female" required>
+                <span>여</span>
+              </label>
+            </div>
+            <p class="hint">라디오 버튼으로 남/여 중 하나를 반드시 선택해야 합니다.</p>
+          </fieldset>
 
             <div class="field">
                 <label for="town">지역</label>
