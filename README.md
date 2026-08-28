@@ -55,6 +55,7 @@
 | --- | :---: |------------------------------|
 | [08.25](./daily-log/0825.md) | Day 0 | 발대식(우리은행 본점) / 금융AX 인사이트 특강 — AI 생산성 단절과 조직 재구성          |
 | [08.26](./daily-log/0826.md) | Day 1 | 교육 개요 · 커리큘럼 / Git, Markdown |
+| [08.27](./daily-log/0827.md) | Day 2 | Git 되돌리기 / AI 코딩 도구 · 프롬프트 엔지니어링 · AI 디버깅 |
 
 ---
 
@@ -80,5 +81,7 @@ woori-wonit-2026/
 
 - **Daily Log** : `daily-log/MMDD.md`, 첫 두 줄은 `# Day N — YYYY.MM.DD (요일)` + `> 학습 키워드`
 - **Daily Log 표** : 날짜 오름차순 — 새로운 날짜는 표 맨 아래에 추가, 달이 바뀌면 `### YYYY.MM` 소제목 추가
+- **회고** : Daily Log 마지막은 `## 회고` — Keep(유지할 것) · Problem(개선할 것) · Try(시도할 것) 각 1~2줄
 - **단원 폴더** : 각 폴더의 `README.md`가 해당 단원의 목차 역할
+- **실습 기록** : 내세울 만한 실습은 단원 폴더에 STAR(Situation · Task · Action · Result)로 정리
 - **커밋 컨벤션** : `feat` 기능 추가 / `fix` 버그 수정 / `doc` 문서 작성 · 수정 / `chore` 기타 설정
