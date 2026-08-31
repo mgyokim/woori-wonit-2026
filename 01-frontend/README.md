@@ -45,7 +45,7 @@
 
 | 파일 | 내용 |
 | --- | --- |
-| [`1_js_primitive.js`](./01_web-main/03_js/1_js_primitive.js) | 변수(`var`/`let`/`const`) · 명명규칙 · 원시 자료형 · 연산자 · 조건문 |
+| [`1_js_primitive.js`](./01_web-main/03_js/1_js_primitive.js) | 변수(`var`/`let`/`const`) · 명명규칙 · 원시 자료형 · 연산자 · 조건문(`if` · `switch` · 삼항연산자) |
 | [`2_js_reference.js`](./01_web-main/03_js/2_js_reference.js) | 참조 자료형 — 배열 · 객체 · 함수 — _진행 예정_ |
 | [`exam6-ajax.html`](./01_web-main/03_js/exam6-ajax.html) · [`exam7-fetch.html`](./01_web-main/03_js/exam7-fetch.html) · [`exam9-async-await.html`](./01_web-main/03_js/exam9-async-await.html) | 비동기 통신 — ajax · fetch · async/await — _진행 예정_ |
 
@@ -63,6 +63,7 @@
 | 계좌 카드에 CSS 입히기 | 박스모델 + Flexbox로 카드 한 장 완성, 구조와 표현 분리 | [`06_account_card/`](./01_web-main/02_css/06_account_card) |
 | 나의 포트폴리오 페이지 | `index.html` + `keyword.html`, 시맨틱 태그와 내비게이션 | _별도 저장소_ |
 | 이체 가능 여부 판정 | 조건문을 함수로 묶어 잔액 · 한도 검사, 경계값 테스트 | _진행 중_ |
+| 메뉴 분기 네 가지 방법 | 같은 문제를 `switch` · fallthrough · `includes()` · 삼항연산자로 | [`1_js_primitive.js`](./01_web-main/03_js/1_js_primitive.js) |
 
 ### AI를 활용한 프론트엔드 버그 5종 디버깅
 

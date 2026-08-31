@@ -121,31 +121,29 @@ menu + 를 드시는군요. 를 출력
 
 // 삼항연산자 - 불표현식 ? 참 : 거짓
 
-/* 실습2: if / switch 문으로 각각 작성해보세요.
-1. 짜장면  2. 짬뽕   3. 샐러드 중 하나를 받으면
-menu + 를 드시는군요. 를 출력
-1, 2, 3 이 아닌 경우는 '그럼 뭐 드실래요?'를 출력해보세요. */
-/* 실습2: if / switch 문으로 각각 작성해보세요.
-1. 짜장면  2. 짬뽕   3. 샐러드 중 하나를 받으면
-menu + 를 드시는군요. 를 출력
-1, 2, 3 이 아닌 경우는 '그럼 뭐 드실래요?'를 출력해보세요. */
+// -- 실습2 풀이 : 같은 문제를 네 가지 방법으로 --
 
-var menu = '짜장면'
+// 1) switch : case 마다 break
+//    default 가 없어서, 셋 중 하나가 아니면 아무것도 출력되지 않는다.
+let menu = '짜장면'
 switch (menu) {
-  case ('짜장면'):
-    console.log(menu + '를 드시는군요 ')
+  case '짜장면':
+    console.log(menu + '를 드시는군요.')
     break
-  case ('짬뽕'):
-    console.log(menu + '를 드시는군요 ')
+  case '짬뽕':
+    console.log(menu + '를 드시는군요.')
     break
-  case ('샐러드'):
-    console.log(menu + '를 드시는군요 ')
+  case '샐러드':
+    console.log(menu + '를 드시는군요.')
     break
 }
 
-var menu = '샐러드'
-console.log('🚀 ~  ~ menu: ', menu)
+// let 은 재선언이 안 된다. 여기서 'let menu' 라고 다시 쓰면
+// SyntaxError: Identifier 'menu' has already been declared 로 죽는다.
+// var 였다면 조용히 덮어써져서 실수를 못 잡는다. 그래서 재할당만 한다.
+menu = '샐러드'
 
+// 2) switch : case 를 연달아 써서 묶고(fallthrough), default 로 나머지를 받는다
 switch (menu) {
   case '짜장면':
   case '짬뽕':
@@ -156,7 +154,9 @@ switch (menu) {
     console.log('그럼 뭐 드실래요?')
 }
 
+// 3) if : 배열의 includes() 로 포함 여부를 한 번에 판정
 if (['짜장면', '짬뽕', '샐러드'].includes(menu)) console.log(menu + '를 드시는군요.')
 else console.log('그럼 뭐 드실래요?')
 
+// 4) 삼항연산자 : 불표현식 ? 참 : 거짓
 console.log(['짜장면', '짬뽕', '샐러드'].includes(menu) ? menu + '를 드시는군요.' : '그럼 뭐 드실래요?')
