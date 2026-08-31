@@ -34,9 +34,12 @@
 | [`04_size.html`](./01_web-main/02_css/04_size.html) | 크기 단위 — `px` · `em` · `rem` · `vw` · `vh` |
 | [`03_flex.html`](./01_web-main/02_css/03_flex.html) | Flexbox — 1차원 레이아웃 — _진행 예정_ |
 | [`05_grid.html`](./01_web-main/02_css/05_grid.html) | Grid — 2차원 레이아웃 — _진행 예정_ |
+| [`06_account_card/`](./01_web-main/02_css/06_account_card) | 계좌 카드에 스타일 입히기 — 박스모델 + Flexbox 실습 |
 
 박스모델(content · padding · border · margin), viewport와 반응형, 미디어 쿼리는
 [Day 3 로그](../daily-log/0828.md#5-css)에 정리했다.
+박스모델과 Flexbox를 실제로 적용한 결과는 [`06_account_card/style.css`](./01_web-main/02_css/06_account_card/style.css) 에 있다 —
+코드 안에 박스모델이 쓰인 자리를 `ⓐ~ⓔ`, Flexbox가 쓰인 자리를 `①~③` 으로 표시해 두었다.
 
 ### JavaScript
 
@@ -52,7 +55,7 @@
 | AI와 함께 코딩하기 | 낯선 코드 읽기 · AI 디버깅 · 자동완성으로 계좌 카드 만들기 | [woori-wonit-ai-coding](https://github.com/mgyokim/woori-wonit-ai-coding) |
 | AI에게 구조만 시켜보기 | CSS 없이 시맨틱 태그로만 계좌 카드 구조 만들기 | [`02_html기초.html`](./01_web-main/01_html/02_html기초.html) |
 | 폼 데이터 다루기 | `method` 를 바꿔가며 전송값 관찰, 입력 종류별 값 추출 | [`04_html_input/`](./01_web-main/01_html/04_html_input) |
-| 계좌 카드에 CSS 입히기 | 박스모델 + Flexbox로 카드 한 장 완성 — _Flexbox 진도 이후_ | – |
+| 계좌 카드에 CSS 입히기 | 박스모델 + Flexbox로 카드 한 장 완성, 구조와 표현 분리 | [`06_account_card/`](./01_web-main/02_css/06_account_card) |
 | 나의 포트폴리오 페이지 | `index.html` + `keyword.html`, 시맨틱 태그와 내비게이션 | _별도 저장소_ |
 
 ### AI를 활용한 프론트엔드 버그 5종 디버깅
@@ -82,6 +85,25 @@
   `<dl>` 이 "이름-값" 쌍에 맞고 `<table>` 은 2차원 데이터용이라는 것을 근거로 확인했다.
   **첫 답을 최종본으로 받지 않는 것**이 결과 품질을 갈랐다.
 - **기록** — [`02_html기초.html`](./01_web-main/01_html/02_html기초.html) · [Day 3 (08.28)](../daily-log/0828.md)
+
+### 계좌 카드에 CSS 입히기 — 박스모델과 Flexbox
+
+- **Situation** — 구조만 있던 계좌 카드에 스타일을 입히는 단계. 앞 실습에서 만든 HTML은
+  `02_html기초.html` 한 파일 안에 들어 있어, 구조와 표현을 분리할 자리가 없었다.
+- **Task** — 흰 배경 · 옅은 그림자 · 둥근 모서리, 버튼 두 개는 Flexbox로 카드 하단 양 끝 정렬.
+  제약은 **CSS 파일 하나 · 외부 라이브러리 금지 · 속성마다 왜 썼는지 한글 주석**.
+- **Action** — `06_account_card/` 폴더를 만들어 `index.html`(구조) 과 `style.css`(표현) 로 분리했다.
+  나중에 다시 읽었을 때 어디서 무엇을 배웠는지 찾을 수 있도록, 코드 안에 **박스모델이 쓰인 자리는
+  `ⓐ~ⓔ`, Flexbox가 쓰인 자리는 `①~③`** 으로 표시했다. 마진이 어떻게 동작하는지 보려고
+  카드를 두 장 뒀다.
+- **Result** — 만들면서 걸린 지점이 셋이었다.
+  `box-sizing: border-box` 를 깔지 않으면 `width: 200px` 상자에 `padding: 20px` 을 준 순간
+  실제 너비가 **240px** 이 되어 레이아웃이 밀린다. 카드 사이 간격은 `margin-bottom` 대신
+  **flex의 `gap`** 으로 잡았는데, 마지막 카드에 남는 여백을 따로 지울 필요가 없어서다.
+  `<dd>` 는 브라우저가 기본으로 왼쪽 **40px 들여쓰기**를 넣어, 계좌번호가 은행명보다 안쪽으로
+  밀려 보였다 — `margin-left: 0` 으로 해결. 버튼에는 `flex: 1` 을 줘서 남는 공간을 반씩 나눠
+  갖게 했고, 덕분에 글자 수가 달라져도 폭이 흔들리지 않는다.
+- **기록** — [`06_account_card/`](./01_web-main/02_css/06_account_card) · [Day 3 (08.28)](../daily-log/0828.md#5-css)
 
 ## 관련 Daily Log
 
