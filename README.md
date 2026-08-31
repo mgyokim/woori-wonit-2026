@@ -56,7 +56,7 @@
 | [08.25](./daily-log/0825.md) | Day 0 | 발대식(우리은행 본점) / 금융AX 인사이트 특강 — AI 생산성 단절과 조직 재구성          |
 | [08.26](./daily-log/0826.md) | Day 1 | 교육 개요 · 커리큘럼 / Git, Markdown |
 | [08.27](./daily-log/0827.md) | Day 2 | Git 되돌리기 / AI 코딩 도구 · 프롬프트 엔지니어링 · AI 디버깅 |
-| [08.28](./daily-log/0828.md) | Day 3 | 웹 동작 원리 / HTML 기초 · 시맨틱 태그 · 폼 / AI로 페이지 만들기 |
+| [08.28](./daily-log/0828.md) | Day 3 | 웹의 개념 · HTTP · 브라우저 구조 / HTML · 시맨틱 태그 · 폼 · DOM / CSS 박스모델 · Flexbox · 반응형 |
 
 ---
 

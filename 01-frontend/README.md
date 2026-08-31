@@ -25,11 +25,23 @@
 | [`02_ai_prompting.md`](./01_web-main/01_html/02_ai_prompting.md) | 프론트엔드 프롬프팅 — 프레임워크 명시 · 구조 묘사 · class 우선 |
 | [`mission.md`](./01_web-main/01_html/mission.md) | 실습 과제 |
 
-### CSS · JavaScript
+### CSS — [`01_web-main/02_css`](./01_web-main/02_css)
+
+| 파일 | 내용 |
+| --- | --- |
+| [`01_position.html`](./01_web-main/02_css/01_position.html) | `static` · `relative` · `absolute` · `fixed` · `sticky` |
+| [`02_z-index.html`](./01_web-main/02_css/02_z-index.html) | 겹친 요소의 수직(앞뒤) 순서 |
+| [`03_flex.html`](./01_web-main/02_css/03_flex.html) | Flexbox — 1차원 레이아웃, `justify-content` · `gap` |
+| [`05_grid.html`](./01_web-main/02_css/05_grid.html) | Grid — 2차원 레이아웃 |
+| [`04_size.html`](./01_web-main/02_css/04_size.html) | 크기 단위 — `px` · `em` · `rem` · `vw` · `vh` |
+
+박스모델(content · padding · border · margin), viewport와 반응형, 미디어 쿼리는
+[Day 3 로그](../daily-log/0828.md#5-css)에 정리했다.
+
+### JavaScript
 
 | 폴더 | 상태 |
 | --- | --- |
-| [`02_css`](./01_web-main/02_css) | position · z-index · flex · grid · size — _진행 예정_ |
 | [`03_js`](./01_web-main/03_js) | 원시/참조 타입 · ajax · fetch · async-await — _진행 예정_ |
 
 ## 실습
@@ -40,7 +52,8 @@
 | AI와 함께 코딩하기 | 낯선 코드 읽기 · AI 디버깅 · 자동완성으로 계좌 카드 만들기 | [woori-wonit-ai-coding](https://github.com/mgyokim/woori-wonit-ai-coding) |
 | AI에게 구조만 시켜보기 | CSS 없이 시맨틱 태그로만 계좌 카드 구조 만들기 | [`02_html기초.html`](./01_web-main/01_html/02_html기초.html) |
 | 폼 데이터 다루기 | `method` 를 바꿔가며 전송값 관찰, 입력 종류별 값 추출 | [`04_html_input/`](./01_web-main/01_html/04_html_input) |
-| 나의 포트폴리오 페이지 | `index.html` + `keyword.html`, 시맨틱 태그와 내비게이션 — _진행 예정_ | – |
+| 계좌 카드에 CSS 입히기 | 박스모델 + Flexbox로 카드 한 장 완성 — _진행 중_ | – |
+| 나의 포트폴리오 페이지 | `index.html` + `keyword.html`, 시맨틱 태그와 내비게이션. `portfolio` 저장소로 제출 — _진행 예정_ | – |
 
 ### AI를 활용한 프론트엔드 버그 5종 디버깅
 
@@ -73,4 +86,4 @@
 ## 관련 Daily Log
 
 - [Day 2 (08.27)](../daily-log/0827.md) — AI 코딩 도구 · 프롬프트 엔지니어링 · AI 디버깅
-- [Day 3 (08.28)](../daily-log/0828.md) — 웹 동작 원리 · HTML 기초 · 시맨틱 태그 · 폼 · AI로 페이지 만들기
+- [Day 3 (08.28)](../daily-log/0828.md) — 웹의 개념 · HTTP · 브라우저 구조 / HTML · 시맨틱 태그 · 폼 · DOM / CSS 박스모델 · Flexbox · 반응형
