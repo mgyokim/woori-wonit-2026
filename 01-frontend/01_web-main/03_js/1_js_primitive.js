@@ -120,3 +120,43 @@ menu + 를 드시는군요. 를 출력
 
 
 // 삼항연산자 - 불표현식 ? 참 : 거짓
+
+/* 실습2: if / switch 문으로 각각 작성해보세요.
+1. 짜장면  2. 짬뽕   3. 샐러드 중 하나를 받으면
+menu + 를 드시는군요. 를 출력
+1, 2, 3 이 아닌 경우는 '그럼 뭐 드실래요?'를 출력해보세요. */
+/* 실습2: if / switch 문으로 각각 작성해보세요.
+1. 짜장면  2. 짬뽕   3. 샐러드 중 하나를 받으면
+menu + 를 드시는군요. 를 출력
+1, 2, 3 이 아닌 경우는 '그럼 뭐 드실래요?'를 출력해보세요. */
+
+var menu = '짜장면'
+switch (menu) {
+  case ('짜장면'):
+    console.log(menu + '를 드시는군요 ')
+    break
+  case ('짬뽕'):
+    console.log(menu + '를 드시는군요 ')
+    break
+  case ('샐러드'):
+    console.log(menu + '를 드시는군요 ')
+    break
+}
+
+var menu = '샐러드'
+console.log('🚀 ~  ~ menu: ', menu)
+
+switch (menu) {
+  case '짜장면':
+  case '짬뽕':
+  case '샐러드':
+    console.log(menu + '를 드시는군요.')
+    break
+  default:
+    console.log('그럼 뭐 드실래요?')
+}
+
+if (['짜장면', '짬뽕', '샐러드'].includes(menu)) console.log(menu + '를 드시는군요.')
+else console.log('그럼 뭐 드실래요?')
+
+console.log(['짜장면', '짬뽕', '샐러드'].includes(menu) ? menu + '를 드시는군요.' : '그럼 뭐 드실래요?')
