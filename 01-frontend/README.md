@@ -41,11 +41,16 @@
 박스모델과 Flexbox를 실제로 적용한 결과는 [`06_account_card/style.css`](./01_web-main/02_css/06_account_card/style.css) 에 있다 —
 코드 안에 박스모델이 쓰인 자리를 `ⓐ~ⓔ`, Flexbox가 쓰인 자리를 `①~③` 으로 표시해 두었다.
 
-### JavaScript
+### JavaScript — [`01_web-main/03_js`](./01_web-main/03_js)
 
-| 폴더 | 상태 |
+| 파일 | 내용 |
 | --- | --- |
-| [`03_js`](./01_web-main/03_js) | 원시/참조 타입 · ajax · fetch · async-await — _진행 예정_ |
+| [`1_js_primitive.js`](./01_web-main/03_js/1_js_primitive.js) | 변수(`var`/`let`/`const`) · 명명규칙 · 원시 자료형 · 연산자 · 조건문 |
+| [`2_js_reference.js`](./01_web-main/03_js/2_js_reference.js) | 참조 자료형 — 배열 · 객체 · 함수 — _진행 예정_ |
+| [`exam6-ajax.html`](./01_web-main/03_js/exam6-ajax.html) · [`exam7-fetch.html`](./01_web-main/03_js/exam7-fetch.html) · [`exam9-async-await.html`](./01_web-main/03_js/exam9-async-await.html) | 비동기 통신 — ajax · fetch · async/await — _진행 예정_ |
+
+`===` 를 쓰는 이유, 이벤트 핸들러 "등록"의 의미, BOM(window · location · navigator)은
+[Day 4 로그](../daily-log/0831.md)에 정리했다.
 
 ## 실습
 
@@ -57,6 +62,7 @@
 | 폼 데이터 다루기 | `method` 를 바꿔가며 전송값 관찰, 입력 종류별 값 추출 | [`04_html_input/`](./01_web-main/01_html/04_html_input) |
 | 계좌 카드에 CSS 입히기 | 박스모델 + Flexbox로 카드 한 장 완성, 구조와 표현 분리 | [`06_account_card/`](./01_web-main/02_css/06_account_card) |
 | 나의 포트폴리오 페이지 | `index.html` + `keyword.html`, 시맨틱 태그와 내비게이션 | _별도 저장소_ |
+| 이체 가능 여부 판정 | 조건문을 함수로 묶어 잔액 · 한도 검사, 경계값 테스트 | _진행 중_ |
 
 ### AI를 활용한 프론트엔드 버그 5종 디버깅
 
