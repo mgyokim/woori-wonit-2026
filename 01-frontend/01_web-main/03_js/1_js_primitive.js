@@ -161,3 +161,37 @@ else console.log('그럼 뭐 드실래요?')
 
 // 4) 삼항연산자 : 불표현식 ? 참 : 거짓
 console.log(['짜장면', '짬뽕', '샐러드'].includes(menu) ? menu + '를 드시는군요.' : '그럼 뭐 드실래요?')
+
+
+/*
+1. var age라는 변수에 나이를 입력받고, 나이가 18보다 적으면 미성년자 18 이상이면 성인을 출력하는 조건문
+2. 나이가 13살 미만이면 어린이 / 18 미만이면 미성년자 / 18 이상이면 성인
+* */
+var age = Number(prompt('나이를 입력하세요.'))
+if (age < 18) {
+  console.log('미성년자')
+} else {
+  console.log('성인')
+}
+// 1. var age라는 변수에 나이를 입력받고, 나이가 18보다 적으면 미성년자 18 이상이면 성인을 출력하는 조건문
+
+// 2. 나이가 13살 미만이면 어린이 / 18 미만이면 미성년자 / 18 이상이면 성인
+
+if (age < 13) {
+  console.log('어린이')
+} else if (age < 18) {
+  console.log('미성년자')
+} else {
+  console.log('성인')
+}
+
+// 나이가 0 살 미만인 것을 고려한 케이스
+if (age < 0) { // 첫번째로 0보다 작은지 확인
+  console.log("나이가 0보다 작을 수 없습니다.")
+} else if (age < 13) {
+  console.log("어린이");
+} else if (age < 18) {
+  console.log("미성년자")
+} else if (18 <= age ) {
+  console.log("성인");
+};
