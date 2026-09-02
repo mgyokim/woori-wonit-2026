@@ -131,6 +131,20 @@ Object.keys(dict3).forEach(key => {
 // - 자바스크립트 객체를 문자열로 변환할 수 있습니다.
 // - JSON.stringify() : 객체를 JSON 문자열로 변환
 // - JSON.parse() : JSON 문자열을 객체로 변환
+// 서버와 데이터를 주고받을 때는 객체를 그대로 못 보내고 문자열로 바꿔서 보낸다.
+var jsonStr = JSON.stringify(dict) // 객체 -> 문자열
+console.log("🚀 ~  ~ jsonStr: ", jsonStr);
+console.log("🚀 ~  ~ typeof jsonStr: ", typeof jsonStr); // string
+
+var back = JSON.parse(jsonStr) // 문자열 -> 객체
+console.log("🚀 ~  ~ back: ", back);
+console.log("🚀 ~  ~ typeof back: ", typeof back); // object
+
+// 되돌린 것은 값만 같을 뿐 '다른 객체' 다. 주소를 비교하는 === 는 false.
+console.log("🚀 ~  ~ back === dict: ", back === dict); // false
+
+// JSON 이 담을 수 있는 자료형은 제한적이다. undefined 와 함수는 통째로 사라진다.
+console.log("🚀 ~  ~ 손실: ", JSON.stringify({ a: 1, b: undefined, c: function () {} })); // {"a":1}
 
 /* -4. Map: dictionary와 마찬가지로 키-값으로 쌍을 저장합니다. 키로 값을 꺼내 씁니다.
     - 키로 모든 데이터 타입을 받아줍니다.
