@@ -345,6 +345,16 @@ while (i < 10) {
 // arr 와 .length 속성을 이용해서 arr의 모든 원소를 출력하는 while문을 만들어보세요.
 
 // forEach (인덱스를 경유하지 않고 바로 값만 출력하는 메서드)
+arr.forEach((value, index, array) => {
+  /*
+  * 콜백 파라미터 관련
+  * */
+  // console.log('🚀 ~  ~ value: ', value)
+  // console.log('🚀 ~  ~ index: ', index)
+  // console.log('🚀 ~  ~ array: ', array)
+
+  console.log('🚀 ~  ~ value: ', value)
+})
 
 // for ... of : 인덱스를 경유하지 않고 각 원소에 직접 접근
 
