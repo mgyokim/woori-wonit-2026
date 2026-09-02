@@ -9,7 +9,7 @@ var mixedArray = [1, '가', true, null, undefined, [1, 2, 3]]
 console.log('🚀 ~  ~ mixedArray: ', mixedArray)
 console.log('🚀 ~  ~ mixedArray[0]: ', mixedArray[0])
 
-// 실습: array1이라는 배열을 만들고 apple, banana, carrot 세개의 문자열을 각 index에 넣어보세요.
+// 실습: fruits 라는 배열을 만들고 apple, banana, carrot 세개의 문자열을 각 index에 넣어보세요.
 var fruits = ['apple', 'banana', 'carrot']
 console.log('🚀 ~  ~ fruits: ', fruits)
 
@@ -110,6 +110,13 @@ console.log('🚀 ~  ~ customer: ', customer)
 var wordDict = { 2: 100, '가': '가위', '나': '나비', '라': '라디오', '다': '다람쥐' }
 console.log('🚀 ~  ~ wordDict: ', wordDict)
 
+// 위 설명 "key 는 중복될 수 없다" 확인 - 같은 key 를 두 번 쓰면 뒤엣것만 남는다 (에러 없음)
+console.log('🚀 ~  ~ key 중복: ', { a: 1, a: 2 }) // { a: 2 }
+
+// 위 설명 "key 의 순서는 보장되지 않는다" 확인
+// 넣은 순서는 나 -> 2 -> 가 인데, 숫자처럼 생긴 key 는 오름차순으로 앞에 모인다
+console.log('🚀 ~  ~ key 순서: ', Object.keys({ '나': 1, 2: 2, '가': 3 })) // [ '2', '나', '가' ]
+
 // key 로 value 를 꺼내는 방법 두 가지
 //   1) 점 표기법  wordDict.가     - key 를 이름처럼 쓴다. 공백이 있거나 숫자로 시작하는 key 에는 못 쓴다.
 //   2) 대괄호     wordDict['가']  - key 를 문자열로 넘긴다. key 를 변수로 받아야 할 땐 이쪽만 된다.
@@ -128,7 +135,7 @@ var wordDictKeys = Object.keys(wordDict)
 console.log('🚀 ~  ~ wordDictKeys: ', wordDictKeys)
 
 // 요소 삭제: delete 객체[key]
-delete wordDict['가'] // dict2에서 key가 '가'인 요소를 삭제합니다.
+delete wordDict['가'] // wordDict 에서 key가 '가'인 요소를 삭제합니다.
 console.log('🚀 ~  ~ wordDict: ', wordDict)
 
 // value 자리에는 배열도 객체도 들어간다. key 는 불리언 true 로 넣어본다.
@@ -277,9 +284,10 @@ for (let i = 5; i > 0; i -= 2) {
 }
 console.log('🚀 ~  ~ oddList: ', oddList.join(', '))
 
-// 배열의 길이는 .length 라는 속성으로 확인
+// 배열의 길이는 .length 라는 속성으로 확인 (메서드가 아니라 () 를 안 붙인다)
 var friendNames = ['짱구', '철수', '유리']
 console.log('🚀 ~  ~ friendNames: ', friendNames)
+console.log('🚀 ~  ~ friendNames.length: ', friendNames.length) // 3
 
 // 실습: ~야, 안녕? 이라는 글귀를 더해서 3명한테 인사를 해주세요.
 // 같은 결과를 두 가지로 — 그래서 이름마다 두 번씩 찍힌다.
@@ -304,7 +312,9 @@ for (var key of Object.keys(wordDict)) {
 }
 
 // map 은 .size 라는 '속성' 으로 방의 개수를 구할 수 있습니다. (메서드가 아니라 () 를 안 붙인다)
-// map1에 들어있는 key - value 를 출력해보세요.
+console.log('🚀 ~  ~ customerMap.size: ', customerMap.size) // 3
+
+// customerMap 에 들어있는 key - value 를 출력해보세요.
 console.log('🚀 ~  ~ [...customerMap.keys()]: ', [...customerMap.keys()]) // ... 없이 [customerMap.keys()] 로 쓰면 iterator 가 통째로 담긴다
 
 // key, value 를 for ... of 로 출력
@@ -389,18 +399,26 @@ while (i < friendNames.length) {
 }
 
 // forEach (인덱스를 경유하지 않고 바로 값만 출력하는 메서드)
+// 콜백은 (값, 인덱스, 원본배열) 세 개를 받는다. 필요 없으면 뒤에서부터 생략할 수 있다.
 friendNames.forEach((value, index, array) => {
-  /*
-  * 콜백 파라미터 관련
-  * */
-  // console.log('🚀 ~  ~ value: ', value)
-  // console.log('🚀 ~  ~ index: ', index)
-  // console.log('🚀 ~  ~ array: ', array)
+  console.log(`🚀 index ${index} / value ${value} / array ${array}`)
+})
 
+// 값만 필요하면 나머지는 안 적으면 된다 - 실제로 제일 많이 쓰는 모양
+friendNames.forEach(value => {
   console.log('🚀 ~  ~ value: ', value)
 })
 
 // for ... of : 인덱스를 경유하지 않고 각 원소에 직접 접근
+// for 문처럼 i 를 만들 필요도, friendNames[i] 로 꺼낼 필요도 없다. 값이 바로 들어온다.
+for (var friend of friendNames) {
+  console.log('🚀 ~  ~ friend: ', friend)
+}
+
+// 인덱스도 같이 필요하면 entries() 를 구조분해로 받는다
+for (var [index, friend] of friendNames.entries()) {
+  console.log(`🚀 ~  ~ ${index}번: ${friend}`)
+}
 
 /* 10. 함수 : 코드를 재사용하기 위해 씁니다.
  *     같은 로직이 여러 곳에 흩어지면 규칙이 바뀔 때 전부 찾아 고쳐야 한다.
@@ -496,7 +514,7 @@ function printGreeting() {
   console.log('안녕하세요, 우리은행입니다.')
 }
 printGreeting()
-console.log("🚀 ~  ~ printGreeting(): ", printGreeting()); // undefined - return 이 없다
+console.log('🚀 ~  ~ printGreeting(): ', printGreeting()) // undefined - return 이 없다
 
 // 2) 입력 O, 결과 X - 받은 값으로 동작만 한다. 값을 돌려주지 않으니 변수에 담을 게 없다
 function printCustomer(name) {
@@ -510,15 +528,15 @@ function getToday() {
   return date.getFullYear() + '년 ' + (date.getMonth() + 1) + '월 ' + date.getDate() + '일'
 }
 var today = getToday() // 결과가 있으니 변수에 담아서 계속 쓸 수 있다
-console.log("🚀 ~  ~ today: ", today);
+console.log('🚀 ~  ~ today: ', today)
 
 // 4) 입력 O, 결과 O - 받아서 계산해 돌려준다. 실무에서 제일 많이 쓰는 꼴
 function calculateFee(amount) {
   return Math.round(amount * 0.005) // 이체 금액의 0.5% 를 수수료로
 }
-console.log("🚀 ~  ~ calculateFee(300000): ", calculateFee(300000));
+console.log('🚀 ~  ~ calculateFee(300000): ', calculateFee(300000))
 // 결과를 돌려주니 다른 함수에 그대로 넘길 수 있다 (함수를 조립할 수 있다)
-console.log("🚀 ~  ~ 수수료 문자열: ", calculateFee(300000).toLocaleString() + '원');
+console.log('🚀 ~  ~ 수수료 문자열: ', calculateFee(300000).toLocaleString() + '원')
 
 // 5) 입력 개수가 정해지지 않은 경우 - 나머지 매개변수 ...args 로 배열처럼 묶어 받는다
 function sumAll(...args) {
@@ -528,8 +546,8 @@ function sumAll(...args) {
   }
   return total
 }
-console.log("🚀 ~  ~ sumAll(1, 2, 3): ", sumAll(1, 2, 3));
-console.log("🚀 ~  ~ sumAll(1, 2, 3, 4, 5): ", sumAll(1, 2, 3, 4, 5));
+console.log('🚀 ~  ~ sumAll(1, 2, 3): ', sumAll(1, 2, 3))
+console.log('🚀 ~  ~ sumAll(1, 2, 3, 4, 5): ', sumAll(1, 2, 3, 4, 5))
 
 
 /* 위 네 가지는 '입출력' 으로 나눈 것이고, 이것과 별개로 '쓰는 모양' 으로 나눈 분류가 따로 있다.
@@ -560,33 +578,58 @@ console.log("🚀 ~  ~ sumAll(1, 2, 3, 4, 5): ", sumAll(1, 2, 3, 4, 5));
 //                 한번 값을 넣으면 바꿀 수 없음. 그러나 객체 내부의 속성 등은 수정 가능
 
 // scope : 변수에 접근할 수 있는 위치를 제어
-// var x = '가'; // 함수 범위
-// let y = '나'; // 블록 범위
-// const z = '다'; // 블록 범위, 상수 (값 변경 불가)
+function variableExample() {
+  var x = 10 // 함수 범위
+  let y = 20 // 블록 범위
+  const z = 30 // 블록 범위, 상수 (값 변경 불가)
 
-// function variableExample() {
-//     var x = 10; // 함수 범위
-//     let y = 20; // 블록 범위
-//     const z = 30; // 블록 범위, 상수 (값 변경 불가)
+  if (true) {
+    var x = 40 // 같은 함수 안이라 위의 x 를 그대로 덮어쓴다 (블록을 무시)
+    let y = 50 // 이 { } 안에서만 유효한 별개의 y
+    const z = 60 // 이 { } 안에서만 유효한 별개의 z
 
-//     if (true) {
-//         var x = 40; // 같은 함수 내에서 var 변수는 덮어씌워짐
-//         let y = 50; // 블록 내에서만 유효
-//         const z = 60; // 블록 내에서만 유효
+    console.log('if문 내부:', x, y, z) // 40 50 60
+  }
 
-//         console.log('if문 내부:', x, y, z); // 40, 50, 60
-//     }
+  console.log('if문 외부:', x, y, z) // 40 20 30
+  // x 만 40 으로 바뀌어 있다. var 는 블록을 뚫고 나오고, let/const 는 { } 안에 갇힌다.
+}
+variableExample()
 
-//     console.log('if문 외부:', x, y, z); // 40, 20, 30 (var는 재할당되었지만, let과 const는 블록 범위를 가짐)
-// }
+// 호이스팅 : 선언은 위로 끌어올려지지만 '값' 은 안 끌려온다.
+console.log('🚀 ~  ~ 호이스팅된 var: ', hoistedVar) // undefined - 에러가 아니다
+var hoistedVar = 10
+console.log('🚀 ~  ~ 대입 후 var: ', hoistedVar) // 10
+
+// TDZ : let/const 도 끌어올려지긴 하지만, 선언 줄에 닿기 전엔 '접근 금지' 구간이다.
+try {
+  console.log(tdzLet) // 여기서 죽는다
+  let tdzLet = 1
+} catch (e) {
+  console.log('🚀 ~  ~ TDZ: ', e.name) // ReferenceError
+}
+// var 는 undefined 를 돌려주고 let 은 에러를 낸다.
+// "값이 이상하게 나오는 것" 보다 "바로 죽는 것" 이 고치기 쉬워서 let/const 를 권한다.
+
+// const 는 '재할당' 을 막을 뿐, 내용물을 못 바꾸는 게 아니다.
+// 위 반복문에서 const oddList 에 push 했던 것이 이 경우다.
+const box = [1, 2]
+box.push(3) // 가능 - 배열 자체(주소)는 그대로고 내용만 바뀐다
+console.log('🚀 ~  ~ const 배열에 push: ', box) // [ 1, 2, 3 ]
+try {
+  eval('box = [9]') // 재할당은 불가
+} catch (e) {
+  console.log('🚀 ~  ~ const 재할당: ', e.name) // TypeError
+}
 
 /* 11.  클래스: 같은 형식으로 사용하기 위한 자료형을 미리 만들어놓고 계속 객체를 찍어서 재사용
  - 실제로는 function 으로 만들어집니다.
  - sugar coated 문법: 다른 언어와 호환되다 보니까 class 클래스명으로 만들면 내부적으로 코드를 변환해서 동작시켜줍니다. 
 */
 
-function Person (name, age) {
-  this.name = name
+// 1) 옛날 방식 - 생성자 함수 + prototype. class 가 없던 시절에 이렇게 썼다.
+function Person(name, age) {
+  this.name = name // this = new 로 만들어진 그 인스턴스
   this.age = age
 }
 
@@ -594,8 +637,48 @@ Person.prototype.greet = function () {
   console.log('안녕하세요!' + this.name)
 }
 
-// static: 클래스를 통해 접근하는 클래스 변수, 클래스 메서드
-// 인스턴스를 통해 접근하는 인스턴스 변수(this로 전달), 인스턴스 메서드
-// 은닉성 구현: #을 붙인 private 변수를 사용하여 외부에서 접근하지 못하도록 숨길 수 있습니다.
+// new 를 붙여야 인스턴스가 만들어진다. 안 붙이면 그냥 함수 호출이라 undefined 가 나온다.
+var person1 = new Person('김민교', 20)
+person1.greet()
+console.log('🚀 ~  ~ person1: ', person1)
+
+// 2) class 문법 - 위와 하는 일이 같다. 주석의 "실제로는 function 으로 만들어집니다" 가 이 뜻.
+class Customer {
+  static bankName = '우리은행' // static: 인스턴스가 아니라 클래스에 붙는다
+  #password // #: private. 클래스 바깥에서 못 읽는다
+
+  constructor(name, balance, password) {
+    this.name = name // 인스턴스 변수
+    this.balance = balance
+    this.#password = password
+  }
+
+  greet() {
+    // 인스턴스 메서드
+    return `안녕하세요, ${this.name}님. 잔액은 ${this.balance.toLocaleString()}원입니다.`
+  }
+
+  checkPassword(input) {
+    return this.#password === input // 내부에서는 읽을 수 있다
+  }
+
+  static info() {
+    // static 메서드 - 인스턴스 없이 클래스로 바로 부른다
+    return Customer.bankName + ' 고객'
+  }
+}
+
+var customer1 = new Customer('김민교', 1500000, '0000')
+console.log('🚀 ~  ~ customer1.greet(): ', customer1.greet())
+console.log('🚀 ~  ~ checkPassword: ', customer1.checkPassword('0000'), customer1.checkPassword('1234')) // true false
+console.log('🚀 ~  ~ static: ', Customer.bankName, Customer.info()) // 인스턴스 없이 클래스로 접근
+
+// 은닉 확인 - #password 는 바깥에서 안 보인다
+console.log('🚀 ~  ~ 인스턴스에 뭐가 보이나: ', Object.keys(customer1)) // password 가 없다
+console.log('🚀 ~  ~ typeof Customer: ', typeof Customer) // 'function' - class 는 함수 위에 씌운 문법이다
+
+// 같은 형식을 계속 찍어낼 수 있다는 것이 클래스의 목적
+var customers = [new Customer('짱구', 5000, '1111'), new Customer('철수', 30000, '2222')]
+customers.forEach(c => console.log('🚀 ~  ~ ', c.greet()))
 
 
