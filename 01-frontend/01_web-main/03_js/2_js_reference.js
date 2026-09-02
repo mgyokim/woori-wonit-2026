@@ -343,6 +343,11 @@ while (i < 10) {
   console.log(i)
 }
 // arr 와 .length 속성을 이용해서 arr의 모든 원소를 출력하는 while문을 만들어보세요.
+var i = 0
+while (i < arr.length) {
+  console.log('🚀 ~  ~ arr[i]: ', arr[i])
+  i++
+}
 
 // forEach (인덱스를 경유하지 않고 바로 값만 출력하는 메서드)
 arr.forEach((value, index, array) => {
@@ -359,22 +364,142 @@ arr.forEach((value, index, array) => {
 // for ... of : 인덱스를 경유하지 않고 각 원소에 직접 접근
 
 /* 10. 함수 : 코드를 재사용하기 위해 씁니다.
-- 1. 기본형
-  function 함수명(파라미터1, 파라미터2, 파리미터3 ...) {
-      파라미터를 받아서 실행할 실행문
-      return 달고 돌아갈 덩어리 하나    
+ *     같은 로직이 여러 곳에 흩어지면 규칙이 바뀔 때 전부 찾아 고쳐야 한다.
+ *     함수로 묶으면 한 곳만 고치면 된다.
+ *
+ * -1. 기본형
+ *     function 함수명(파라미터1, 파라미터2, 파라미터3 ...) {
+ *         파라미터를 받아서 실행할 실행문
+ *         return 달고 돌아갈 덩어리 하나
+ *     }
+ *
+ * -2. 익명함수 : lambda처럼 쓰고 버리는 걸 기본으로 합니다.
+ *     var 함수명 = function (파라미터1, 파라미터2, 파라미터3 ...) {
+ *         파라미터를 받아서 실행할 실행문
+ *         return 달고 돌아갈 덩어리 하나
+ *     }
+ *
+ * -3. 화살표함수 : (파라미터) => { 동작 }
+ */
+
+// ---------- -1. 기본형 ----------
+
+// 입력도 결과도 없는 함수
+function hello1() {
+  console.log('🚀 ~ hello1 ~ hello')
 }
+hello1()
 
-- 2. 익명함수: lambda처럼 쓰고 버리는 걸 기본으로 합니다.
-- var 함수명 = function(파라미터1, 파라미터2, 파리미터3 ...) {
-      파라미터를 받아서 실행할 실행문
-      return 달고 돌아갈 덩어리 하나
+// 입력만 있는 함수. name 은 이 함수 안에서만 쓰는 지역변수다.
+function hello2(name) {
+  console.log('🚀 ~ hello2 ~ name: ', name)
 }
+hello2('김민')
 
--3. 화살표함수: () => { 동작 }
-*/
+// 입력도 결과도 있는 함수 - 배열을 받아 이어붙여서 돌려준다
+var arr10 = ['짱구', '짱아', '훈이']
 
-var arr = ['짱구', '짱아', '훈이']
+function hello3(arr) { // 매개변수 이름이 바깥의 arr 와 같아도 서로 다른 변수다
+  var resultSum = ''
+  var arrLen = arr.length
+  console.log('🚀 ~ hello3 ~ arrLen: ', arrLen)
+
+  for (var i = 0; i < arrLen; i++) {
+    console.log('🚀 ~ hello3 ~ arr[i]: ', arr[i])
+    resultSum = resultSum + arr[i]
+  }
+  return resultSum
+}
+console.log('🚀 ~  ~ hello3(arr10): ', hello3(arr10))
+
+
+// ---------- -2. 익명함수 ----------
+
+// 이름 없이 만들어서 변수에 담는다. 변수 이름이 곧 함수 이름 역할을 한다.
+var hello4 = function (name) {
+  return name + '님, 안녕하세요.'
+}
+console.log('🚀 ~  ~ hello4: ', hello4('짱구'))
+
+
+// ---------- -3. 화살표함수 ----------
+
+// 익명함수를 더 짧게 쓴 것. 위 forEach 에 넘겼던 것도 화살표함수였다.
+var hello5 = (name) => {
+  return name + '님, 안녕하세요.'
+}
+console.log('🚀 ~  ~ hello5: ', hello5('훈이'))
+
+// 실행문이 return 한 줄뿐이면 { } 와 return 을 같이 생략할 수 있다
+var hello6 = (name) => name + '님, 안녕하세요.'
+console.log('🚀 ~  ~ hello6: ', hello6('철수'))
+
+// 셋 다 결과가 같다. 모양만 다르고 하는 일은 같다.
+console.log('🚀 ~  ~ 같은가: ', hello4('맹구') === hello5('맹구'), hello5('맹구') === hello6('맹구'))
+
+
+/* ■ 함수의 네 가지 꼴 (위 -1 ~ -3 이 '모양' 이라면, 이건 '입출력' 기준 분류다)
+ *     "입력(매개변수)을 받느냐" x "결과(return)를 돌려주느냐" 두 축으로 나눈다.
+ *
+ *     | # | 입력 | 결과 | 언제 쓰나                    | 위 예시  |
+ *     |---|------|------|------------------------------|----------|
+ *     | 1 |  X   |  X   | 부르면 늘 같은 동작만 할 때   | hello1   |
+ *     | 2 |  O   |  X   | 받은 값으로 동작만 할 때      | hello2   |
+ *     | 3 |  X   |  O   | 입력 없이 값을 만들어 줄 때   | 아래 3)  |
+ *     | 4 |  O   |  O   | 받아서 계산해 돌려줄 때       | hello3   |
+ *
+ *     return 이 없는 함수(1, 2번)를 실행하면 결과는 undefined 다.
+ *     "동작을 시키는 함수" 와 "값을 얻는 함수" 를 구분하는 게 이 표의 핵심.
+ */
+
+// 1) 입력 X, 결과 X - 부르면 정해진 동작만 한다
+function printGreeting() {
+  console.log('안녕하세요, 우리은행입니다.')
+}
+printGreeting()
+console.log("🚀 ~  ~ printGreeting(): ", printGreeting()); // undefined - return 이 없다
+
+// 2) 입력 O, 결과 X - 받은 값으로 동작만 한다. 값을 돌려주지 않으니 변수에 담을 게 없다
+function printCustomer(name) {
+  console.log(name + '님, 안녕하세요.')
+}
+printCustomer('김민교')
+
+// 3) 입력 X, 결과 O - 부를 때마다 값을 만들어 돌려준다
+function getToday() {
+  var date = new Date()
+  return date.getFullYear() + '년 ' + (date.getMonth() + 1) + '월 ' + date.getDate() + '일'
+}
+var today = getToday() // 결과가 있으니 변수에 담아서 계속 쓸 수 있다
+console.log("🚀 ~  ~ today: ", today);
+
+// 4) 입력 O, 결과 O - 받아서 계산해 돌려준다. 실무에서 제일 많이 쓰는 꼴
+function calculateFee(amount) {
+  return Math.round(amount * 0.005) // 이체 금액의 0.5% 를 수수료로
+}
+console.log("🚀 ~  ~ calculateFee(300000): ", calculateFee(300000));
+// 결과를 돌려주니 다른 함수에 그대로 넘길 수 있다 (함수를 조립할 수 있다)
+console.log("🚀 ~  ~ 수수료 문자열: ", calculateFee(300000).toLocaleString() + '원');
+
+// 5) 입력 개수가 정해지지 않은 경우 - 나머지 매개변수 ...args 로 배열처럼 묶어 받는다
+function sumAll(...args) {
+  var total = 0
+  for (var num of args) {
+    total = total + num
+  }
+  return total
+}
+console.log("🚀 ~  ~ sumAll(1, 2, 3): ", sumAll(1, 2, 3));
+console.log("🚀 ~  ~ sumAll(1, 2, 3, 4, 5): ", sumAll(1, 2, 3, 4, 5));
+
+
+/* 위 네 가지는 '입출력' 으로 나눈 것이고, 이것과 별개로 '쓰는 모양' 으로 나눈 분류가 따로 있다.
+ *   기본형   function calculateFee(amount) { ... }
+ *   익명함수 var calculateFee = function (amount) { ... }
+ *   화살표   var calculateFee = (amount) => { ... }
+ * 셋 다 하는 일은 같고, 나누는 축이 다를 뿐이다. 차이는 아래 스코프/호이스팅에서 이어진다.
+ */
+
 
 // -4. 함수의 스코프
 //     1. 스코프 : 변수나 함수가 어디까지 접근해서 사용할 수 있는지. 
