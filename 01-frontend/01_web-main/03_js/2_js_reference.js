@@ -50,10 +50,49 @@ var uniqueNumbers = new Set(numbersWithDup)
 console.log('🚀 ~  ~ uniqueNumbers: ', uniqueNumbers)
 
 // JS의 sort는 기본적으로 유니코드로 정렬을 합니다. 숫자는 어떻게 정렬해야 할까요?
+
+/* ■ sort 와 비교함수 (a, b) => a - b
+ *
+ * 1) sort() 를 인자 없이 쓰면, 원소를 '문자열로 바꿔서' 유니코드 순서로 줄세운다.
+ *    숫자여도 문자로 보기 때문에 [10, 9, 1] 이 [1, 10, 9] 가 된다.
+ *    '10' 과 '9' 를 비교할 때 첫 글자 '1' 과 '9' 에서 이미 승부가 나서 '10' 이 앞에 온다.
+ *
+ * 2) 숫자 순서로 정렬하려면 "둘 중 누가 앞이냐" 를 판단하는 함수를 직접 넘겨야 한다.
+ *    sort 는 정렬하는 동안 원소를 두 개씩 뽑아 이 함수에 넣고, 돌아온 값의 '부호' 만 본다.
+ *
+ *        음수(< 0)  ->  a 를 앞으로
+ *        0          ->  순서 그대로
+ *        양수(> 0)  ->  b 를 앞으로
+ *
+ *    크기가 아니라 부호만 쓴다. -1 이든 -565 든 똑같이 "a 가 앞" 으로만 취급한다.
+ *
+ * 3) 그래서 a - b 는
+ *        a 가 작으면 a - b 가 음수 -> a 가 앞 -> 작은 값부터  = 오름차순
+ *        b - a 로 뒤집으면                                    = 내림차순
+ *
+ * 4) 화살표함수라 짧아 보이지만 원래 모양은 이것과 같다.
+ *        unsortedValues.sort(function (a, b) { return a - b })
+ *    a, b 는 sort 가 넣어주는 두 원소라서 이름은 아무거나 써도 된다. (x, y 로 써도 동작 같음)
+ *
+ * 5) 문자열에 a - b 를 쓰면 안 된다. 문자열끼리 빼면 NaN 이라 정렬이 깨진다.
+ *    문자열은 sort() 기본 동작이나 localeCompare 를 쓴다.
+ */
+
+// 1) 비교함수 없이 - 숫자인데도 문자열로 비교해서 10 이 9 앞에 온다
+console.log('🚀 ~  ~ sort() 기본: ', [10, 9, 1].sort()) // [ 1, 10, 9 ]
+
+// 2) a - b : 오름차순 / b - a : 내림차순
+console.log('🚀 ~  ~ a - b (오름차순): ', [10, 9, 1].sort((a, b) => a - b)) // [ 1, 9, 10 ]
+console.log('🚀 ~  ~ b - a (내림차순): ', [10, 9, 1].sort((a, b) => b - a)) // [ 10, 9, 1 ]
+
+// 3) 화살표함수를 안 쓴 원래 모양 - 결과는 위와 같다
+console.log('🚀 ~  ~ function 으로 쓴 것: ', [10, 9, 1].sort(function (a, b) { return a - b })) // [ 1, 9, 10 ]
+
 var unsortedValues = [-565, -3, 556, 1.3, NaN, null, true, undefined,]
 unsortedValues.sort((a, b) => a - b) // 숫자 오름차순 정렬은 비교함수 (a, b) => a - b
 // 주의: 이 배열엔 NaN, null, true, undefined 가 섞여 있어 a - b 가 NaN 을 반환한다.
-//       비교가 성립하지 않아 결과는 오름차순이 아니다. (undefined 는 비교함수를 거치지 않고 항상 맨 뒤)
+//       NaN 은 음수도 0도 양수도 아니라 "누가 앞" 을 판정할 수 없고, 결과는 오름차순이 아니다.
+//       (undefined 는 비교함수를 거치지 않고 항상 맨 뒤로 간다)
 console.log('🚀 ~  ~ unsortedValues: ', unsortedValues) // sort 는 원본을 정렬하므로 배열을 찍는다 (unsortedValues.sort 는 함수 자체)
 
 // -3. Object(일반 객체) - key(기본 자료형)로 value를 부르는 종류의 dictionary 타입
