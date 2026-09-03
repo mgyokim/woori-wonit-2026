@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<h2 id="num">0</h2>
+
+<input type="button" value="초기화" onclick="resetCount()">
+<input type="button" value="+" onclick="add()">
+<input type="button" value="-" onclick="minus()">
+
+<script>
+  // 화면(innerText)이 곧 상태다. 값을 읽고 쓸 자리를 함수로 묶어둔다.
+  function getCount() {
+    return Number(document.getElementById("num").innerText);
+  }
+
+  function setCount(value) {
+    document.getElementById("num").innerText = value;
+  }
+
+  // 초기화: num 자리를 0으로
+  // 함수 이름을 reset 으로 두면, 버튼이 <form> 안에 들어갔을 때
+  // 폼의 reset() 이 먼저 잡혀서 이 함수가 안 불린다. 그래서 resetCount 로 쓴다.
+  function resetCount() {
+    setCount(0);
+  }
+
+  // 누를 때마다 1씩 추가
+  function add() {
+    setCount(getCount() + 1);
+  }
+
+  // 누를 때마다 1씩 감소. 단 0 밑으로는 내려가지 않는다.
+  function minus() {
+    if (getCount() <= 0) return; // 가드가 없으면 -1, -2 로 계속 내려간다
+    setCount(getCount() - 1);
+  }
+</script>
+</body>
+</html>
