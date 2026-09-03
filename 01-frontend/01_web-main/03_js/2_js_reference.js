@@ -350,7 +350,6 @@ while (i <= 5) {
   i += 2
 }
 
-
 // 방법 2) while (true) 로 무한반복을 만들고 break 로 직접 끊는다.
 //         조건을 맨 위에서 못 쓰고 "한 번 실행한 뒤에 판단" 해야 할 때 쓴다.
 
@@ -442,21 +441,23 @@ for (var [index, friend] of friendNames.entries()) {
 // ---------- -1. 기본형 ----------
 
 // 입력도 결과도 없는 함수
-function printHello() {
+function printHello () {
   console.log('🚀 ~ printHello ~ hello')
 }
+
 printHello()
 
 // 입력만 있는 함수. name 은 이 함수 안에서만 쓰는 지역변수다.
-function printName(name) {
+function printName (name) {
   console.log('🚀 ~ printName ~ name: ', name)
 }
+
 printName('김민')
 
 // 입력도 결과도 있는 함수 - 배열을 받아 이어붙여서 돌려준다
 var familyNames = ['짱구', '짱아', '훈이']
 
-function joinNames(friendNames) { // 매개변수 이름이 바깥의 friendNames 와 같아도 서로 다른 변수다
+function joinNames (friendNames) { // 매개변수 이름이 바깥의 friendNames 와 같아도 서로 다른 변수다
   var joined = ''
   var nameCount = friendNames.length
   console.log('🚀 ~ joinNames ~ nameCount: ', nameCount)
@@ -467,8 +468,8 @@ function joinNames(friendNames) { // 매개변수 이름이 바깥의 friendName
   }
   return joined
 }
-console.log('🚀 ~  ~ joinNames(familyNames): ', joinNames(familyNames))
 
+console.log('🚀 ~  ~ joinNames(familyNames): ', joinNames(familyNames))
 
 // ---------- -2. 익명함수 ----------
 
@@ -477,7 +478,6 @@ var greetByAnonymous = function (name) {
   return name + '님, 안녕하세요.'
 }
 console.log('🚀 ~  ~ greetByAnonymous: ', greetByAnonymous('짱구'))
-
 
 // ---------- -3. 화살표함수 ----------
 
@@ -494,7 +494,6 @@ console.log('🚀 ~  ~ greetByArrowShort: ', greetByArrowShort('철수'))
 // 셋 다 결과가 같다. 모양만 다르고 하는 일은 같다.
 console.log('🚀 ~  ~ 같은가: ', greetByAnonymous('맹구') === greetByArrow('맹구'), greetByArrow('맹구') === greetByArrowShort('맹구'))
 
-
 /* ■ 함수의 네 가지 꼴 (위 -1 ~ -3 이 '모양' 이라면, 이건 '입출력' 기준 분류다)
  *     "입력(매개변수)을 받느냐" x "결과(return)를 돌려주느냐" 두 축으로 나눈다.
  *
@@ -510,45 +509,49 @@ console.log('🚀 ~  ~ 같은가: ', greetByAnonymous('맹구') === greetByArrow
  */
 
 // 1) 입력 X, 결과 X - 부르면 정해진 동작만 한다
-function printGreeting() {
+function printGreeting () {
   console.log('안녕하세요, 우리은행입니다.')
 }
+
 printGreeting()
 console.log('🚀 ~  ~ printGreeting(): ', printGreeting()) // undefined - return 이 없다
 
 // 2) 입력 O, 결과 X - 받은 값으로 동작만 한다. 값을 돌려주지 않으니 변수에 담을 게 없다
-function printCustomer(name) {
+function printCustomer (name) {
   console.log(name + '님, 안녕하세요.')
 }
+
 printCustomer('김민교')
 
 // 3) 입력 X, 결과 O - 부를 때마다 값을 만들어 돌려준다
-function getToday() {
+function getToday () {
   var date = new Date()
   return date.getFullYear() + '년 ' + (date.getMonth() + 1) + '월 ' + date.getDate() + '일'
 }
+
 var today = getToday() // 결과가 있으니 변수에 담아서 계속 쓸 수 있다
 console.log('🚀 ~  ~ today: ', today)
 
 // 4) 입력 O, 결과 O - 받아서 계산해 돌려준다. 실무에서 제일 많이 쓰는 꼴
-function calculateFee(amount) {
+function calculateFee (amount) {
   return Math.round(amount * 0.005) // 이체 금액의 0.5% 를 수수료로
 }
+
 console.log('🚀 ~  ~ calculateFee(300000): ', calculateFee(300000))
 // 결과를 돌려주니 다른 함수에 그대로 넘길 수 있다 (함수를 조립할 수 있다)
 console.log('🚀 ~  ~ 수수료 문자열: ', calculateFee(300000).toLocaleString() + '원')
 
 // 5) 입력 개수가 정해지지 않은 경우 - 나머지 매개변수 ...args 로 배열처럼 묶어 받는다
-function sumAll(...args) {
+function sumAll (...args) {
   var total = 0
   for (var num of args) {
     total = total + num
   }
   return total
 }
+
 console.log('🚀 ~  ~ sumAll(1, 2, 3): ', sumAll(1, 2, 3))
 console.log('🚀 ~  ~ sumAll(1, 2, 3, 4, 5): ', sumAll(1, 2, 3, 4, 5))
-
 
 /* 위 네 가지는 '입출력' 으로 나눈 것이고, 이것과 별개로 '쓰는 모양' 으로 나눈 분류가 따로 있다.
  *   기본형   function calculateFee(amount) { ... }
@@ -556,7 +559,6 @@ console.log('🚀 ~  ~ sumAll(1, 2, 3, 4, 5): ', sumAll(1, 2, 3, 4, 5))
  *   화살표   var calculateFee = (amount) => { ... }
  * 셋 다 하는 일은 같고, 나누는 축이 다를 뿐이다. 차이는 아래 스코프/호이스팅에서 이어진다.
  */
-
 
 // -4. 함수의 스코프
 //     1. 스코프 : 변수나 함수가 어디까지 접근해서 사용할 수 있는지. 
@@ -578,7 +580,7 @@ console.log('🚀 ~  ~ sumAll(1, 2, 3, 4, 5): ', sumAll(1, 2, 3, 4, 5))
 //                 한번 값을 넣으면 바꿀 수 없음. 그러나 객체 내부의 속성 등은 수정 가능
 
 // scope : 변수에 접근할 수 있는 위치를 제어
-function variableExample() {
+function variableExample () {
   var x = 10 // 함수 범위
   let y = 20 // 블록 범위
   const z = 30 // 블록 범위, 상수 (값 변경 불가)
@@ -594,6 +596,7 @@ function variableExample() {
   console.log('if문 외부:', x, y, z) // 40 20 30
   // x 만 40 으로 바뀌어 있다. var 는 블록을 뚫고 나오고, let/const 는 { } 안에 갇힌다.
 }
+
 variableExample()
 
 // 호이스팅 : 선언은 위로 끌어올려지지만 '값' 은 안 끌려온다.
@@ -622,13 +625,18 @@ try {
   console.log('🚀 ~  ~ const 재할당: ', e.name) // TypeError
 }
 
+// let 으로 같은 걸 해보면 재할당이 그냥 된다. 막아주는 게 const 의 역할.
+let box2 = [1, 2]
+box2 = [9]
+console.log('🚀 ~  ~ let 재할당: ', box2) // [ 9 ]
+
 /* 11.  클래스: 같은 형식으로 사용하기 위한 자료형을 미리 만들어놓고 계속 객체를 찍어서 재사용
  - 실제로는 function 으로 만들어집니다.
  - sugar coated 문법: 다른 언어와 호환되다 보니까 class 클래스명으로 만들면 내부적으로 코드를 변환해서 동작시켜줍니다. 
 */
 
 // 1) 옛날 방식 - 생성자 함수 + prototype. class 가 없던 시절에 이렇게 썼다.
-function Person(name, age) {
+function Person (name, age) {
   this.name = name // this = new 로 만들어진 그 인스턴스
   this.age = age
 }
@@ -647,22 +655,22 @@ class Customer {
   static bankName = '우리은행' // static: 인스턴스가 아니라 클래스에 붙는다
   #password // #: private. 클래스 바깥에서 못 읽는다
 
-  constructor(name, balance, password) {
+  constructor (name, balance, password) {
     this.name = name // 인스턴스 변수
     this.balance = balance
     this.#password = password
   }
 
-  greet() {
+  greet () {
     // 인스턴스 메서드
     return `안녕하세요, ${this.name}님. 잔액은 ${this.balance.toLocaleString()}원입니다.`
   }
 
-  checkPassword(input) {
+  checkPassword (input) {
     return this.#password === input // 내부에서는 읽을 수 있다
   }
 
-  static info() {
+  static info () {
     // static 메서드 - 인스턴스 없이 클래스로 바로 부른다
     return Customer.bankName + ' 고객'
   }
@@ -680,5 +688,98 @@ console.log('🚀 ~  ~ typeof Customer: ', typeof Customer) // 'function' - clas
 // 같은 형식을 계속 찍어낼 수 있다는 것이 클래스의 목적
 var customers = [new Customer('짱구', 5000, '1111'), new Customer('철수', 30000, '2222')]
 customers.forEach(c => console.log('🚀 ~  ~ ', c.greet()))
+
+// BankAccount 라는 은행 계좌를 관리하기 위한 class를 만들어보겠습니다.
+// bankName, name, accountNumber, balance
+// #을 앞에 붙인 변수는 클래스 외부에서 접근이 불가능하도록(private) 숨길 수 있습니다.
+class BankAccount {
+
+  #balance
+
+  // 클래스 변수: static 이라는 키워드를 앞에 적어둔 클래스 변수로 클래스에서 관리하기 위한 속성을 저장합니다.
+  static bankName = '우리'
+  static accountNo = 0 // 이 은행에 계좌를 만든 총 계좌수
+
+  // 클래스 메서드: static 이라는 키워드를 앞에 적어서 클래스에서 필요한 동작을 만듭니다.
+  static hello () {
+    console.log(`어서오세요. ${this.bankName}은행입니다~ 개설 이래 현재까지 ${this.accountNo}개의 계좌가 있답니다.`)
+  }
+
+  // 인스턴스 변수: this 라는 키워드로 각 새로 만들어진 고객 인스턴스만의 고유한 값들을 전달
+  constructor (name, accountNumber, balance) {
+    this.name = name
+    this.accountNumber = accountNumber
+    this.#balance = balance
+    this.cusAccountNo = ++BankAccount.accountNo // 그 때의 계좌수
+  }
+
+  // 함수인 걸 숨겨서 변수처럼 이 값을 파악하게 하려고
+  // get -> 조회 , set -> 수정
+  // 인스턴스 메서드: deposit: 입금  - 기존 balance에 새로 들어온 금액을 추가
+  set deposit (amount) { // setter : 값을 변경만 하는 함수
+    this.#balance += amount
+  }
+
+  // 인스턴스 메서드: withdraw: 출금 - 기존 balace에 새로 빠져나간 금액을 제외
+  set withdraw (amount) { // setter: 값을 변경만 하는 함수
+    this.#balance -= amount
+  }
+
+  // private 변수의 조회만 가능하도록 작성한 getter 함수
+  // 실제로는 함수지만 외부에서 메서드로 사용할 때 변수처럼 부르게 됩니다.
+  get checkAmount () {
+    console.log(this.#balance)
+  }
+}
+
+var 아이유 = new BankAccount('IU', '123-45', 30000)
+console.log('🚀 ~  ~ 아이유: ', 아이유) // #balance 는 안 보인다
+
+// deposit 은 setter 라서 () 가 아니라 대입으로 부른다
+// 아이유.deposit(40000);
+아이유.deposit = 40000
+
+// checkAmount 는 getter 만 있다. 대입해도 조용히 무시된다 (에러도 안 난다)
+// 아이유.checkAmount();
+아이유.checkAmount = -9999999999999999
+console.log('checkAmount 에 대입해본 후 -------------')
+아이유.checkAmount // 40000 이 더해진 값 그대로. 위 대입은 안 먹었다
+
+아이유.withdraw = 4000
+아이유.checkAmount
+console.log('🚀 ~  ~ 아이유: ', 아이유)
+
+// 클래스 변수와 클래스 메서드는 클래스를 통해 접근
+BankAccount.hello()
+console.log(BankAccount.bankName)
+
+// 객체지향프로그래밍의 결과를 최대한 살려서 장점처럼 써봅시다.
+// 변수에 직접 접근이 가능하다는 것은 직접 수정도 할 수 있다는 뜻
+// 변수를 확인하거나 조작할 때 method를 경유하도록 만드는 게 권장됩니다.
+
+// console.log(아이유.#balance); // 없는 게 아니라 숨어있음. 그래서 getter로만 확인하고 setter로만 변경 가능
+
+// BankAccount를 상속받은 InsAccount를 만들어주세요.
+// 클래스 변수 를 bankName "동양" 으로 바꿔서 재정의(override)
+// 생성자에 kind 라는 인스턴스 변수를 추가해서  default값은 변액 등 보험의 종류를 넣을 수 있도록 추가해보세요.
+
+class InsAccount extends BankAccount {
+
+  static bankName = '동양' // 변수의 overriding
+  static accountNo = 0 // 0으로 변수를 overriding
+
+  constructor (name, accontNumber, balance, kind = '변액') {  // 생성자 메서드의 오버라이딩
+    super(name, accontNumber, balance)
+    this.kind = kind // 추가해서 사용할 변수명
+    this.cusAccountNo = ++InsAccount.accountNo
+  }
+}
+
+InsAccount.hello()
+var messi = new InsAccount('messi', '123-11', 50000)
+console.log(InsAccount.bankName)
+var ronaldo = new InsAccount('ronaldo', '123-11', 50000)
+var leo = new InsAccount('leo', '123-11', 50000)
+InsAccount.hello()
 
 
