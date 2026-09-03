@@ -46,7 +46,7 @@
 | 파일 | 내용 |
 | --- | --- |
 | [`1_js_primitive.js`](./01_web-main/03_js/1_js_primitive.js) | 변수(`var`/`let`/`const`) · 명명규칙 · 원시 자료형(`bigInt` 포함) · 연산자 · 조건문(`if` · `switch` · 삼항연산자) · `alert`/`confirm`/`prompt` |
-| [`2_js_reference.js`](./01_web-main/03_js/2_js_reference.js) | 참조 자료형 — 배열 메소드(`push`/`pop`/`unshift`/`shift`/`splice`) · `sort` — _진행 중_ (Set · 객체 · Map · 반복문 · 클래스 이어서) |
+| [`2_js_reference.js`](./01_web-main/03_js/2_js_reference.js) | 참조 자료형 — 배열 · Set · 객체 · Map · JSON / 반복문(`for` · `while` · `forEach` · `for...of`) / 함수 · 스코프 · 호이스팅 · 클래스 |
 | [`exam6-ajax.html`](./01_web-main/03_js/exam6-ajax.html) · [`exam7-fetch.html`](./01_web-main/03_js/exam7-fetch.html) · [`exam9-async-await.html`](./01_web-main/03_js/exam9-async-await.html) | 비동기 통신 — ajax · fetch · async/await — _진행 예정_ |
 
 `===` 를 쓰는 이유, 이벤트 핸들러 "등록"의 의미, BOM(window · location · navigator)은
@@ -66,6 +66,8 @@
 | 메뉴 분기 네 가지 방법 | 같은 문제를 `switch` · fallthrough · `includes()` · 삼항연산자로 | [`1_js_primitive.js`](./01_web-main/03_js/1_js_primitive.js) |
 | 나이 분기 조건문 | `else if` 체인 순서와 경계값, 음수 · `NaN` 예외 처리 | [`1_js_primitive.js`](./01_web-main/03_js/1_js_primitive.js) |
 | 배열 다루기 | 앞뒤 삽입·삭제, `splice` 로 교체, 숫자 `sort` 에 비교함수 넘기기 | [`2_js_reference.js`](./01_web-main/03_js/2_js_reference.js) |
+| Map vs Object | 같은 숫자 key 를 Map 은 그대로, Object 는 문자열로 저장 | [`2_js_reference.js`](./01_web-main/03_js/2_js_reference.js) |
+| 실습 파일 리팩터링 | 변수명 231곳 정리 후 실행 결과 대조로 동작 동일성 검증 | [`2_js_reference.js`](./01_web-main/03_js/2_js_reference.js) |
 
 ### AI를 활용한 프론트엔드 버그 5종 디버깅
 
@@ -120,3 +122,4 @@
 - [Day 3 (08.28)](../daily-log/0828.md) — 웹의 개념 · HTTP · 브라우저 구조 / HTML · 시맨틱 태그 · 폼 · DOM / CSS 박스모델 · Flexbox · 반응형
 - [Day 4 (08.31)](../daily-log/0831.md) — JavaScript 첫걸음 — 변수 · 자료형 · `===` · 조건문 · 함수
 - [Day 5 (09.01)](../daily-log/0901.md) — 조건문 실습 — 부등호 방향 · `else if` 순서 · `NaN`
+- [Day 6 (09.02)](../daily-log/0902.md) — 참조 자료형 — 배열 · 객체 · Map · 반복문 · 함수 · 클래스
