@@ -58,19 +58,19 @@
 
 | 날짜 | Day | 다룬 내용 |
 | --- | :---: | --- |
-| [0825.md](./daily-log/0825.md) | 0 | 발대식(우리은행 본점) / 금융AX 인사이트 특강 — AI 생산성 단절과 조직 재구성 |
-| [0826.md](./daily-log/0826.md) | 1 | 교육 개요 · 커리큘럼 / Git 3단계 영역 · 커밋 컨벤션 / Markdown |
-| [0827.md](./daily-log/0827.md) | 2 | Git 되돌리기(`reflog` · `restore` · `revert`) / AI 코딩 도구 · 프롬프트 엔지니어링 · 버그 5종 디버깅 |
-| [0828.md](./daily-log/0828.md) | 3 | 웹의 개념 · HTTP · 브라우저 구조 / HTML 시맨틱 태그 · 폼 · DOM / CSS 박스모델 · Flexbox · 반응형 |
-| [0831.md](./daily-log/0831.md) | 4 | JavaScript 첫걸음 — 변수 · 데이터 타입 · 연산자 / 조건문 · 반복문 / 함수 |
+| [08.25](./daily-log/0825.md) | 0 | 발대식(우리은행 본점) / 금융AX 인사이트 특강 — AI 생산성 단절과 조직 재구성 |
+| [08.26](./daily-log/0826.md) | 1 | 교육 개요 · 커리큘럼 / Git 3단계 영역 · 커밋 컨벤션 / Markdown |
+| [08.27](./daily-log/0827.md) | 2 | Git 되돌리기(`reflog` · `restore` · `revert`) / AI 코딩 도구 · 프롬프트 엔지니어링 · 버그 5종 디버깅 |
+| [08.28](./daily-log/0828.md) | 3 | 웹의 개념 · HTTP · 브라우저 구조 / HTML 시맨틱 태그 · 폼 · DOM / CSS 박스모델 · Flexbox · 반응형 |
+| [08.31](./daily-log/0831.md) | 4 | JavaScript 첫걸음 — 변수 · 데이터 타입 · 연산자 / 조건문 · 반복문 / 함수 |
 
 ### 2026.09
 
 | 날짜 | Day | 다룬 내용 |
 | --- | :---: | --- |
-| [0901.md](./daily-log/0901.md) | 5 | 조건문 실습 · `bigInt` · 배열 / **금융IT 구조의 이해**(노광석 책임) · **카드 개발 프로세스**(김진수 대리) |
-| [0902.md](./daily-log/0902.md) | 6 | 참조 자료형 — 배열 · Set · 객체 · Map · JSON / 반복문 · 함수 / **현직자 밋업** — 우리FIS 기업 소개 · IT영업 |
-| [0903.md](./daily-log/0903.md) | 7 | 클래스 — `getter`/`setter` · `#private` · `static` · 상속 / DOM 과 이벤트 / **[타자 게임](https://mgyokim.github.io/woori-wonit-typing-game-mgyo/) 개선 후 배포** |
+| [09.01](./daily-log/0901.md) | 5 | 조건문 실습 · `bigInt` · 배열 / **금융IT 구조의 이해**(노광석 책임) · **카드 개발 프로세스**(김진수 대리) |
+| [09.02](./daily-log/0902.md) | 6 | 참조 자료형 — 배열 · Set · 객체 · Map · JSON / 반복문 · 함수 / **현직자 밋업** — 우리FIS 기업 소개 · IT영업 |
+| [09.03](./daily-log/0903.md) | 7 | 클래스 — `getter`/`setter` · `#private` · `static` · 상속 / DOM 과 이벤트 / **[타자 게임](https://mgyokim.github.io/woori-wonit-typing-game-mgyo/) 개선 후 배포** |
 
 ---
 

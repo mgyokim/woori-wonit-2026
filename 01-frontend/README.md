@@ -62,7 +62,7 @@
 | AI에게 구조만 시켜보기 | CSS 없이 시맨틱 태그로만 계좌 카드 구조 만들기 | [`02_html기초.html`](./01_web-main/01_html/02_html기초.html) |
 | 폼 데이터 다루기 | `method` 를 바꿔가며 전송값 관찰, 입력 종류별 값 추출 | [`04_html_input/`](./01_web-main/01_html/04_html_input) |
 | 계좌 카드에 CSS 입히기 | 박스모델 + Flexbox로 카드 한 장 완성, 구조와 표현 분리 | [`06_account_card/`](./01_web-main/02_css/06_account_card) |
-| 나의 포트폴리오 페이지 | `index.html` + `keyword.html`, 시맨틱 태그와 내비게이션 | _별도 저장소_ |
+| 나의 포트폴리오 페이지 | `index.html` + `keyword.html`, 시맨틱 태그와 내비게이션 | [mgyokim.github.io](https://mgyokim.github.io/) · [코드](https://github.com/mgyokim/mgyokim.github.io) |
 | 이체 가능 여부 판정 | 조건문을 함수로 묶어 잔액 · 한도 검사, 경계값 테스트 | _진행 중_ |
 | 메뉴 분기 네 가지 방법 | 같은 문제를 `switch` · fallthrough · `includes()` · 삼항연산자로 | [`1_js_primitive.js`](./01_web-main/03_js/1_js_primitive.js) |
 | 나이 분기 조건문 | `else if` 체인 순서와 경계값, 음수 · `NaN` 예외 처리 | [`1_js_primitive.js`](./01_web-main/03_js/1_js_primitive.js) |
