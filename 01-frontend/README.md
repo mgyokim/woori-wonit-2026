@@ -57,6 +57,7 @@
 | 실습 | 설명 | 링크 |
 | --- | --- | --- |
 | **타자 게임 개선 · 배포** | 문제점 8개 발견 후 수정, 파일 분리, GitHub Pages 배포 | [게임](https://mgyokim.github.io/woori-wonit-typing-game-mgyo/) · [코드](https://github.com/mgyokim/woori-wonit-typing-game-mgyo) |
+| **React 계좌 카드** | Vite + React 로 계좌 정보를 그리는 첫 컴포넌트. `<App />` 을 여러 번 렌더해 재사용 확인 | [won-banking-mini](https://github.com/mgyokim/won-banking-mini) |
 | 우리WON뱅킹 핵심 UI 클론 코딩 | _진행 예정_ | – |
 | AI와 함께 코딩하기 | 낯선 코드 읽기 · AI 디버깅 · 자동완성으로 계좌 카드 만들기 | [woori-wonit-ai-coding](https://github.com/mgyokim/woori-wonit-ai-coding) |
 | AI에게 구조만 시켜보기 | CSS 없이 시맨틱 태그로만 계좌 카드 구조 만들기 | [`02_html기초.html`](./01_web-main/01_html/02_html기초.html) |
@@ -139,3 +140,4 @@
 - [Day 5 (09.01)](../daily-log/0901.md) — 조건문 실습 — 부등호 방향 · `else if` 순서 · `NaN`
 - [Day 6 (09.02)](../daily-log/0902.md) — 참조 자료형 — 배열 · 객체 · Map · 반복문 · 함수 · 클래스
 - [Day 7 (09.03)](../daily-log/0903.md) — 클래스 실습 · DOM 과 이벤트 · 타자 게임 개선 후 배포
+- [Day 8 (09.04)](../daily-log/0904.md) — React 시작 — Vite 환경 구성 · JSX · 컴포넌트

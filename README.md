@@ -71,6 +71,7 @@
 | [09.01](./daily-log/0901.md) | 5 | 조건문 실습 · `bigInt` · 배열 / **금융IT 구조의 이해**(노광석 책임) · **카드 개발 프로세스**(김진수 대리) |
 | [09.02](./daily-log/0902.md) | 6 | 참조 자료형 — 배열 · Set · 객체 · Map · JSON / 반복문 · 함수 / **현직자 밋업** — 우리FIS 기업 소개 · IT영업 |
 | [09.03](./daily-log/0903.md) | 7 | 클래스 — `getter`/`setter` · `#private` · `static` · 상속 / DOM 과 이벤트 / **[타자 게임](https://mgyokim.github.io/woori-wonit-typing-game-mgyo/) 개선 후 배포** |
+| [09.04](./daily-log/0904.md) | 8 | React 개발 환경 구성 — Vite 프로젝트 생성 · `nvm` 으로 Node 버전 정리 / JSX · 컴포넌트 · 인라인 스타일 |
 
 ---
 
