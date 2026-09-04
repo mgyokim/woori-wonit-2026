@@ -5,6 +5,10 @@
   <sub>2026.08.25 우리은행 본점에서 열린 발대식</sub>
 </p>
 
+<p align="center">
+  <img src="./assets/nameplate.jpg" width="55%" alt="교육장 좌석 명패">
+</p>
+
 # 우리WON 청년 IT 아카데미 2026
 
 > 우리금융그룹 금융IT 인재양성 과정(600시간)에서 만든 것과 알게 된 것을 남기는 저장소
@@ -95,6 +99,7 @@ AI 디버깅 버그 5개 중 4개가 콘솔 무반응이었고, `default` 없는
 | --- | :---: | --- |
 | [09.01](./daily-log/0901.md) | Day 5 | JavaScript 조건문 실습 · 자료형 보강 · 배열 메소드 / 금융IT 구조의 이해 · 카드 개발 프로세스 (우리FIS 현직자) |
 | [09.02](./daily-log/0902.md) | Day 6 | JavaScript 참조 자료형 — 객체 · Map · 반복문 · 함수 / 현직자 밋업 — 우리FIS 기업 소개 · IT영업과 사업 진행 과정 |
+| [09.03](./daily-log/0903.md) | Day 7 | JavaScript 클래스 — `getter`/`setter` · `#private` · `static` · 상속 / DOM 과 이벤트 / 타자 게임 개선 후 배포 |
 
 </details>
 
