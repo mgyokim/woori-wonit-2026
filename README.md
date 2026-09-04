@@ -70,7 +70,7 @@
 | --- | :---: | --- |
 | [0901.md](./daily-log/0901.md) | 5 | 조건문 실습 · `bigInt` · 배열 / **금융IT 구조의 이해**(노광석 책임) · **카드 개발 프로세스**(김진수 대리) |
 | [0902.md](./daily-log/0902.md) | 6 | 참조 자료형 — 배열 · Set · 객체 · Map · JSON / 반복문 · 함수 / **현직자 밋업** — 우리FIS 기업 소개 · IT영업 |
-| [0903.md](./daily-log/0903.md) | 7 | 클래스 — `getter`/`setter` · `#private` · `static` · 상속 / DOM 과 이벤트 / **타자 게임 개선 후 배포** |
+| [0903.md](./daily-log/0903.md) | 7 | 클래스 — `getter`/`setter` · `#private` · `static` · 상속 / DOM 과 이벤트 / **[타자 게임](https://mgyokim.github.io/woori-wonit-typing-game-mgyo/) 개선 후 배포** |
 
 ---
 
