@@ -74,6 +74,8 @@
 
 ---
 
+<a id="기록-규칙"></a>
+
 <details>
 <summary><b>📁 디렉토리 구조 · ✍️ 기록 규칙</b></summary>
 
