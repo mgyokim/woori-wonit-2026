@@ -19,6 +19,7 @@
 
 | 결과물 | 무엇을 했나 | 링크 |
 | --- | --- | --- |
+| **타자 게임** 🎮 | 주어진 코드에서 문제 8개를 찾아 고치고 HTML·CSS·JS 분리 후 배포. 스페이스바가 버튼을 다시 누르던 버그 등 **에러가 안 나는 것들**이었다 | **[게임](https://mgyokim.github.io/woori-wonit-typing-game-mgyo/)** · [코드](https://github.com/mgyokim/woori-wonit-typing-game-mgyo) |
 | **AI 버그 5종 디버깅** | 콘솔에 에러가 뜬 건 5개 중 1개뿐. 원인이 전부 달랐고, AI가 제시한 수정안 하나는 오답이었다 | [woori-wonit-ai-coding](https://github.com/mgyokim/woori-wonit-ai-coding) |
 | **계좌 카드 UI** | 시맨틱 태그로 구조를, CSS로 표현을 분리. 박스모델과 Flexbox를 쓴 자리를 코드에 표시 | [`06_account_card/`](./01-frontend/01_web-main/02_css/06_account_card) |
 | **폼 데이터 다루기** | `method` 를 바꿔가며 브라우저가 실제로 무엇을 보내는지 관찰 | [`04_html_input/`](./01-frontend/01_web-main/01_html/04_html_input) |

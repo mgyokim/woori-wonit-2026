@@ -56,6 +56,7 @@
 
 | 실습 | 설명 | 링크 |
 | --- | --- | --- |
+| **타자 게임 개선 · 배포** | 문제점 8개 발견 후 수정, 파일 분리, GitHub Pages 배포 | [게임](https://mgyokim.github.io/woori-wonit-typing-game-mgyo/) · [코드](https://github.com/mgyokim/woori-wonit-typing-game-mgyo) |
 | 우리WON뱅킹 핵심 UI 클론 코딩 | _진행 예정_ | – |
 | AI와 함께 코딩하기 | 낯선 코드 읽기 · AI 디버깅 · 자동완성으로 계좌 카드 만들기 | [woori-wonit-ai-coding](https://github.com/mgyokim/woori-wonit-ai-coding) |
 | AI에게 구조만 시켜보기 | CSS 없이 시맨틱 태그로만 계좌 카드 구조 만들기 | [`02_html기초.html`](./01_web-main/01_html/02_html기초.html) |
@@ -68,6 +69,20 @@
 | 배열 다루기 | 앞뒤 삽입·삭제, `splice` 로 교체, 숫자 `sort` 에 비교함수 넘기기 | [`2_js_reference.js`](./01_web-main/03_js/2_js_reference.js) |
 | Map vs Object | 같은 숫자 key 를 Map 은 그대로, Object 는 문자열로 저장 | [`2_js_reference.js`](./01_web-main/03_js/2_js_reference.js) |
 | 실습 파일 리팩터링 | 변수명 231곳 정리 후 실행 결과 대조로 동작 동일성 검증 | [`2_js_reference.js`](./01_web-main/03_js/2_js_reference.js) |
+
+### 타자 게임 — 문제점 개선 후 배포
+
+- **Situation** — 주어진 타자 게임 코드에서 문제점을 찾아 고치고, HTML·CSS·JS 를 분리해 배포하는 과제.
+  코드는 동작은 했지만 **콘솔에 아무 에러도 안 뜨는 상태**였다.
+- **Task** — 직접 눌러봐야 보이는 문제를 찾아내고, 고친 근거를 나중에도 설명할 수 있게 남기기.
+- **Action** — 기능을 하나씩 실제로 조작하며 8개를 찾았다. 제외 키 목록을 늘리는 대신
+  **`event.key.length !== 1`** 로 특수키를 한 줄에 걸렀고, `onclick` 속성을 `addEventListener` 로 옮겨
+  **HTML 은 구조, JS 는 동작**만 담당하게 분리했다. 색·간격은 CSS 변수로 모았다.
+- **Result** — 가장 큰 건 **스페이스바를 누르면 초기화 버튼이 다시 눌리던 버그**였다.
+  버튼 클릭 후 포커스가 남아 스페이스·엔터로 재활성화되는 것이 원인이라 `preventDefault()` 와 `blur()` 로 해결했다.
+  그 외 특수키 감점, 점수 무한 음수, 같은 문자 연속 출제, 키보드 없는 기기에서 실행 불가를 고쳤고
+  정확도와 최고 점수(localStorage)를 추가했다. **8개 중 콘솔에 잡히는 건 하나도 없었다.**
+- **기록** — [게임](https://mgyokim.github.io/woori-wonit-typing-game-mgyo/) · [코드와 상세](https://github.com/mgyokim/woori-wonit-typing-game-mgyo)
 
 ### AI를 활용한 프론트엔드 버그 5종 디버깅
 
